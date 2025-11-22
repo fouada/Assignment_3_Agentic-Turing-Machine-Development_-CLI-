@@ -112,9 +112,42 @@ and understand complex semantic relationships within textual data.
 
 ### Installation Steps
 
+#### Option A: Using UV (Recommended - 10-100x faster) ⚡
+
 ```bash
-# 1. Clone or navigate to the project directory
-cd /path/to/Task_3_Agentic_Turing_Machine_Development_(CLI)
+# 1. Navigate to the project directory
+cd /path/to/Assignment_3_Agentic_Turing_Machine_Development_(CLI)
+
+# 2. Install UV (if not already installed)
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# 3. Install jq (if not already installed)
+# macOS:
+brew install jq
+
+# Linux (Ubuntu/Debian):
+sudo apt-get install jq
+
+# 4. Create virtual environment and install dependencies
+uv venv
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+uv pip install -e .
+
+# 5. Set your OpenAI API key
+export OPENAI_API_KEY='sk-your-actual-api-key-here'
+
+# 6. Make scripts executable
+chmod +x run_agent_chain.sh
+chmod +x run_full_experiment.sh
+```
+
+**See detailed UV setup guide**: [UV_SETUP.md](UV_SETUP.md)
+
+#### Option B: Using Traditional pip
+
+```bash
+# 1. Navigate to the project directory
+cd /path/to/Assignment_3_Agentic_Turing_Machine_Development_(CLI)
 
 # 2. Install jq (if not already installed)
 # macOS:
@@ -123,13 +156,17 @@ brew install jq
 # Linux (Ubuntu/Debian):
 sudo apt-get install jq
 
-# 3. Install Python dependencies
+# 3. Create virtual environment (optional but recommended)
+python3 -m venv .venv
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+
+# 4. Install Python dependencies
 pip install -r requirements.txt
 
-# 4. Set your OpenAI API key
+# 5. Set your OpenAI API key
 export OPENAI_API_KEY='sk-your-actual-api-key-here'
 
-# 5. Make scripts executable
+# 6. Make scripts executable
 chmod +x run_agent_chain.sh
 chmod +x run_full_experiment.sh
 ```

@@ -15,6 +15,13 @@ venv/
 ENV/
 .venv
 
+# UV
+.uv/
+uv.lock
+*.egg-info/
+dist/
+build/
+
 # IDE
 .vscode/
 .idea/
