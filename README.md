@@ -1159,53 +1159,75 @@ logs/
 
 ## 📸 Screenshots & Output References
 
-### Generated Visualizations
+### 📊 Semantic Drift Analysis Graph
 
-| File | Description | Preview |
-|------|-------------|---------|
-| [`results/semantic_drift_analysis_local.png`](results/semantic_drift_analysis_local.png) | Main semantic drift visualization | ![Semantic Drift](results/semantic_drift_analysis_local.png) |
-| [`results/semantic_drift_analysis_local.pdf`](results/semantic_drift_analysis_local.pdf) | Publication-ready PDF version | [View PDF](results/semantic_drift_analysis_local.pdf) |
+<p align="center">
+  <a href="results/semantic_drift_analysis_local.png">
+    <img src="results/semantic_drift_analysis_local.png" alt="Semantic Drift Analysis Graph" width="900"/>
+  </a>
+</p>
 
-### Analysis Results
+<p align="center">
+  <em>Figure: Semantic Drift Analysis showing Cosine Distance, Text Similarity, Word Overlap across noise levels 0%-50%</em>
+</p>
+
+**Download Options:**
+- 📷 **PNG:** [`results/semantic_drift_analysis_local.png`](results/semantic_drift_analysis_local.png) - Web/Screen viewing
+- 📄 **PDF:** [`results/semantic_drift_analysis_local.pdf`](results/semantic_drift_analysis_local.pdf) - Publication-ready print quality
+
+---
+
+### 📋 Analysis Results Files
 
 | File | Description | Content |
 |------|-------------|---------|
-| [`analysis_results_local.json`](analysis_results_local.json) | Quantitative analysis results | Semantic distances, text similarities, word overlaps |
-| [`results/cost_analysis.json`](results/cost_analysis.json) | API cost tracking | Token usage, costs per stage |
-| [`results/analysis.ipynb`](results/analysis.ipynb) | Jupyter research notebook | LaTeX formulas, statistical analysis |
+| 📊 [`results/analysis_results_local.json`](results/analysis_results_local.json) | Quantitative analysis results | Semantic distances, text similarities, word overlaps |
+| 💰 [`results/cost_analysis.json`](results/cost_analysis.json) | API cost tracking | Token usage, costs per stage |
+| 📓 [`results/analysis.ipynb`](results/analysis.ipynb) | Jupyter research notebook | LaTeX formulas, statistical analysis |
 
-### Translation Outputs
+---
 
-| Noise Level | French Output | Hebrew Output | English Output |
-|-------------|---------------|---------------|----------------|
-| 0% | [`noise_0/agent1_french.txt`](outputs/noise_0/agent1_french.txt) | [`noise_0/agent2_hebrew.txt`](outputs/noise_0/agent2_hebrew.txt) | [`noise_0/agent3_english.txt`](outputs/noise_0/agent3_english.txt) |
-| 10% | [`noise_10/agent1_french.txt`](outputs/noise_10/agent1_french.txt) | [`noise_10/agent2_hebrew.txt`](outputs/noise_10/agent2_hebrew.txt) | [`noise_10/agent3_english.txt`](outputs/noise_10/agent3_english.txt) |
-| 20% | [`noise_20/agent1_french.txt`](outputs/noise_20/agent1_french.txt) | [`noise_20/agent2_hebrew.txt`](outputs/noise_20/agent2_hebrew.txt) | [`noise_20/agent3_english.txt`](outputs/noise_20/agent3_english.txt) |
-| 25% | [`noise_25/agent1_french.txt`](outputs/noise_25/agent1_french.txt) | [`noise_25/agent2_hebrew.txt`](outputs/noise_25/agent2_hebrew.txt) | [`noise_25/agent3_english.txt`](outputs/noise_25/agent3_english.txt) |
-| 30% | [`noise_30/agent1_french.txt`](outputs/noise_30/agent1_french.txt) | [`noise_30/agent2_hebrew.txt`](outputs/noise_30/agent2_hebrew.txt) | [`noise_30/agent3_english.txt`](outputs/noise_30/agent3_english.txt) |
-| 40% | [`noise_40/agent1_french.txt`](outputs/noise_40/agent1_french.txt) | [`noise_40/agent2_hebrew.txt`](outputs/noise_40/agent2_hebrew.txt) | [`noise_40/agent3_english.txt`](outputs/noise_40/agent3_english.txt) |
-| 50% | [`noise_50/agent1_french.txt`](outputs/noise_50/agent1_french.txt) | [`noise_50/agent2_hebrew.txt`](outputs/noise_50/agent2_hebrew.txt) | [`noise_50/agent3_english.txt`](outputs/noise_50/agent3_english.txt) |
+### 📂 Translation Outputs by Noise Level
 
-### Test Coverage Reports
+All translation outputs are stored in the `outputs/` directory:
 
-| File | Description |
-|------|-------------|
-| [`htmlcov/index.html`](htmlcov/index.html) | Interactive HTML coverage report |
-| [`coverage.xml`](coverage.xml) | XML coverage report for CI/CD |
-| [`assets/screenshots/coverage_report.html`](assets/screenshots/coverage_report.html) | Coverage report snapshot |
+| Noise | Agent 1 (EN→FR) | Agent 2 (FR→HE) | Agent 3 (HE→EN) |
+|-------|-----------------|-----------------|-----------------|
+| **0%** | [agent1_french.txt](outputs/noise_0/agent1_french.txt) | [agent2_hebrew.txt](outputs/noise_0/agent2_hebrew.txt) | [agent3_english.txt](outputs/noise_0/agent3_english.txt) |
+| **10%** | [agent1_french.txt](outputs/noise_10/agent1_french.txt) | [agent2_hebrew.txt](outputs/noise_10/agent2_hebrew.txt) | [agent3_english.txt](outputs/noise_10/agent3_english.txt) |
+| **20%** | [agent1_french.txt](outputs/noise_20/agent1_french.txt) | [agent2_hebrew.txt](outputs/noise_20/agent2_hebrew.txt) | [agent3_english.txt](outputs/noise_20/agent3_english.txt) |
+| **25%** | [agent1_french.txt](outputs/noise_25/agent1_french.txt) | [agent2_hebrew.txt](outputs/noise_25/agent2_hebrew.txt) | [agent3_english.txt](outputs/noise_25/agent3_english.txt) |
+| **30%** | [agent1_french.txt](outputs/noise_30/agent1_french.txt) | [agent2_hebrew.txt](outputs/noise_30/agent2_hebrew.txt) | [agent3_english.txt](outputs/noise_30/agent3_english.txt) |
+| **40%** | [agent1_french.txt](outputs/noise_40/agent1_french.txt) | [agent2_hebrew.txt](outputs/noise_40/agent2_hebrew.txt) | [agent3_english.txt](outputs/noise_40/agent3_english.txt) |
+| **50%** | [agent1_french.txt](outputs/noise_50/agent1_french.txt) | [agent2_hebrew.txt](outputs/noise_50/agent2_hebrew.txt) | [agent3_english.txt](outputs/noise_50/agent3_english.txt) |
 
-### CI/CD Evidence
+---
 
-| File | Description |
-|------|-------------|
-| [`assets/CI_CD_EVIDENCE.md`](assets/CI_CD_EVIDENCE.md) | Complete CI/CD pipeline evidence |
-| [`.github/workflows/pipeline.yml`](.github/workflows/pipeline.yml) | Main CI/CD workflow |
+### 🧪 Test Coverage Report
 
-### Logs
+**Coverage: 86.32%** ✅
 
 | File | Description |
 |------|-------------|
-| [`logs/agentic_turing_machine.log`](logs/agentic_turing_machine.log) | Application execution logs |
+| 📊 [`htmlcov/index.html`](htmlcov/index.html) | Interactive HTML coverage report |
+| 📄 [`coverage.xml`](coverage.xml) | XML coverage report for CI/CD |
+
+---
+
+### 🔄 CI/CD Evidence
+
+| File | Description |
+|------|-------------|
+| 📋 [`assets/CI_CD_EVIDENCE.md`](assets/CI_CD_EVIDENCE.md) | Complete CI/CD pipeline evidence |
+| ⚙️ [`.github/workflows/pipeline.yml`](.github/workflows/pipeline.yml) | Main CI/CD workflow |
+
+---
+
+### 📝 Logs
+
+| File | Description |
+|------|-------------|
+| 📜 [`logs/agentic_turing_machine.log`](logs/agentic_turing_machine.log) | Application execution logs |
 
 ---
 
