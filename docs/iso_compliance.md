@@ -2,8 +2,17 @@
 ## Agentic Turing Machine - Software Quality Characteristics
 
 **Standard:** ISO/IEC 25010:2011  
-**Date:** 2025-11-26  
+**Date:** November 2025  
 **Version:** 1.0
+
+### Authors
+
+| Name | Student ID | Email |
+|------|------------|-------|
+| Fouad Azem | 040830861 | Fouad.Azem@gmail.com |
+| Tal Goldengorn | 207042573 | T.goldengoren@gmail.com |
+
+**Course:** LLM and Multi Agent Orchestration | **Institution:** Reichman University | **Instructor:** Dr. Yoram Segal
 
 ---
 

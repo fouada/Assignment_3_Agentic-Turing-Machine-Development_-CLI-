@@ -2,6 +2,15 @@
 
 Multi-agent translation pipeline demonstrating LLM attention mechanism robustness using [Claude Agent Skills](https://www.claude.com/blog/skills).
 
+### Authors
+
+| Name | Student ID | Email |
+|------|------------|-------|
+| Fouad Azem | 040830861 | Fouad.Azem@gmail.com |
+| Tal Goldengorn | 207042573 | T.goldengoren@gmail.com |
+
+**Course:** LLM and Multi Agent Orchestration | **Institution:** Reichman University | **Instructor:** Dr. Yoram Segal
+
 ## 🚀 Quick Start
 
 ### Setup (One-time)
