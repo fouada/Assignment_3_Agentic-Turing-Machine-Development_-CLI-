@@ -87,15 +87,17 @@ echo -e "${GREEN}✓ All dependencies installed!${NC}"
 echo ""
 echo -e "${YELLOW}Step 5/5: Verifying installation...${NC}"
 
-# Check key packages
-PACKAGES=("anthropic" "numpy" "matplotlib" "scikit-learn" "pytest")
+# Check key packages (package_name:import_name)
+PACKAGES=("anthropic:anthropic" "numpy:numpy" "matplotlib:matplotlib" "scikit-learn:sklearn" "pytest:pytest")
 ALL_OK=true
 
-for pkg in "${PACKAGES[@]}"; do
-    if python -c "import $pkg" 2>/dev/null; then
-        echo -e "${GREEN}  ✓ $pkg${NC}"
+for pkg_pair in "${PACKAGES[@]}"; do
+    pkg_name="${pkg_pair%%:*}"
+    import_name="${pkg_pair##*:}"
+    if python -c "import $import_name" 2>/dev/null; then
+        echo -e "${GREEN}  ✓ $pkg_name${NC}"
     else
-        echo -e "${RED}  ✗ $pkg (not installed)${NC}"
+        echo -e "${RED}  ✗ $pkg_name (not installed)${NC}"
         ALL_OK=false
     fi
 done
