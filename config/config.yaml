@@ -1,0 +1,200 @@
+# Agentic Turing Machine - Configuration File
+# This file contains non-secret configuration parameters
+
+# =============================================================================
+# PROJECT METADATA
+# =============================================================================
+project:
+  name: "Agentic Turing Machine"
+  version: "1.0.0"
+  description: "Multi-agent translation pipeline demonstrating LLM attention mechanism robustness"
+  author: "Agentic Turing Machine Team"
+
+# =============================================================================
+# PATHS CONFIGURATION
+# =============================================================================
+paths:
+  skills_dir: "skills"
+  data_dir: "data"
+  output_dir: "outputs"
+  results_dir: "results"
+  config_dir: "config"
+  assets_dir: "assets"
+  logs_dir: "logs"
+
+# =============================================================================
+# AGENT SKILLS
+# =============================================================================
+agents:
+  english_to_french:
+    name: "english-to-french-translator"
+    description: "Translates English text to French"
+    stage: 1
+
+  french_to_hebrew:
+    name: "french-to-hebrew-translator"
+    description: "Translates French text to Hebrew"
+    stage: 2
+
+  hebrew_to_english:
+    name: "hebrew-to-english-translator"
+    description: "Translates Hebrew text to English"
+    stage: 3
+
+# =============================================================================
+# EXPERIMENT CONFIGURATION
+# =============================================================================
+experiment:
+  # Test sentence (clean version)
+  original_sentence: "The artificial intelligence system can efficiently process natural language and understand complex semantic relationships within textual data."
+
+  # Noise levels to test (percentages)
+  noise_levels:
+    - 0
+    - 10
+    - 20
+    - 25
+    - 30
+    - 40
+    - 50
+
+  # Noisy sentence variants
+  noisy_inputs:
+    0: "The artificial intelligence system can efficiently process natural language and understand complex semantic relationships within textual data."
+    10: "The artifical intelligence systm can efficiently process natural language and understand complex semantic relationships within textual data."
+    20: "The artifical inteligence systm can efficiently proces natural language and understand complex semantic relationships within textual data."
+    25: "The artifical inteligence systm can eficiently proces natural langauge and understnd complex semantic relationships within textual data."
+    30: "The artifical inteligence systm can eficiently proces natural langauge and understnd complex semantic relationships within textual data."
+    40: "The artifical inteligence systm can eficiently proces naturel langauge and understnd complx semantic relatioships within textual data."
+    50: "The artifical inteligence systm can eficiently proces naturel langauge and understnd complx semantic relatioships withn textul data."
+
+# =============================================================================
+# MODEL CONFIGURATION
+# =============================================================================
+model:
+  # Model identifier
+  name: "claude-sonnet-4-20250514"
+
+  # Model parameters
+  temperature: 0  # Deterministic for consistency
+  max_tokens: 2000
+  top_p: 1.0
+
+  # API retry configuration
+  max_retries: 3
+  retry_delay: 1  # seconds
+  timeout: 60  # seconds
+
+# =============================================================================
+# ANALYSIS CONFIGURATION
+# =============================================================================
+analysis:
+  # TF-IDF parameters
+  tfidf:
+    max_features: 1000
+    ngram_range: [1, 3]  # unigrams, bigrams, trigrams
+    lowercase: true
+    stop_words: null  # Keep all words for semantic preservation
+
+  # Similarity metrics
+  metrics:
+    - cosine_distance
+    - text_similarity
+    - word_overlap
+
+  # Visualization
+  visualization:
+    dpi: 300
+    format: "png"
+    figsize: [12, 8]
+    style: "seaborn-v0_8-darkgrid"
+
+# =============================================================================
+# LOGGING CONFIGURATION
+# =============================================================================
+logging:
+  level: "INFO"  # DEBUG, INFO, WARNING, ERROR, CRITICAL
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  date_format: "%Y-%m-%d %H:%M:%S"
+
+  # File logging
+  file_logging:
+    enabled: true
+    filename: "logs/agentic_turing_machine.log"
+    max_bytes: 10485760  # 10MB
+    backup_count: 5
+
+# =============================================================================
+# COST TRACKING CONFIGURATION
+# =============================================================================
+cost_tracking:
+  enabled: true
+
+  # Pricing per 1M tokens (USD) - Update these based on current Anthropic pricing
+  pricing:
+    claude-sonnet-4:
+      input: 3.00
+      output: 15.00
+    claude-opus-4:
+      input: 15.00
+      output: 75.00
+    claude-haiku-4:
+      input: 0.25
+      output: 1.25
+
+  # Report configuration
+  report:
+    save_to_file: true
+    filename: "results/cost_analysis.json"
+    include_breakdown: true
+
+# =============================================================================
+# PLUGIN/EXTENSIBILITY CONFIGURATION
+# =============================================================================
+plugins:
+  enabled: true
+  plugins_dir: "plugins"
+
+  # Available hooks
+  hooks:
+    - pre_translation
+    - post_translation
+    - pre_analysis
+    - post_analysis
+    - on_error
+
+  # Loaded plugins (list plugin names to enable)
+  loaded:
+    []
+
+# =============================================================================
+# VALIDATION RULES
+# =============================================================================
+validation:
+  # Minimum sentence length (words)
+  min_sentence_length: 15
+
+  # Maximum sentence length (words)
+  max_sentence_length: 100
+
+  # Require API key
+  require_api_key: true
+
+  # Validate skill files exist
+  validate_skills: true
+
+# =============================================================================
+# OUTPUT FORMATTING
+# =============================================================================
+output:
+  # Save format for agent outputs
+  agent_output_format: "txt"
+
+  # Save format for analysis results
+  analysis_format: "json"
+
+  # Pretty print JSON
+  json_indent: 2
+
+  # Include timestamps in filenames
+  include_timestamps: false
