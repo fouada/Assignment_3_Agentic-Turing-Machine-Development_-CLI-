@@ -56,29 +56,112 @@ The **Agentic Turing Machine** is a research-grade multi-agent translation syste
 
 ### Prerequisites
 ```bash
-# Python 3.12+ required
+# Python 3.11+ required
 python3 --version
 
 # Claude API key needed
 export ANTHROPIC_API_KEY='your-key-here'
 ```
 
-### Installation
+---
+
+## 📦 Installation
+
+### Option 1: Using UV (Recommended) ⚡
+
+[UV](https://docs.astral.sh/uv/) is an extremely fast Python package installer and resolver, written in Rust.
+
+#### Step 1: Install UV
+
+```bash
+# macOS / Linux
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# Or with Homebrew (macOS)
+brew install uv
+
+# Or with pip
+pip install uv
+
+# Verify installation
+uv --version
+```
+
+#### Step 2: Clone and Setup Project
+
 ```bash
 # Clone repository
-git clone <repo-url>
+git clone https://github.com/talgoldengoren/Assignment_3_Agentic-Turing-Machine-Development_-CLI-.git
 cd Assignment_3_Agentic-Turing-Machine-Development_-CLI-
+
+# Create virtual environment and install dependencies (FAST! ~2 seconds)
+uv venv
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+
+# Install all dependencies
+uv pip install -e ".[all]"
+```
+
+#### Step 3: Set API Key
+
+```bash
+# Set your Claude API key
+export ANTHROPIC_API_KEY='your-key-here'
+
+# Or create .env file
+echo "ANTHROPIC_API_KEY=your-key-here" > .env
+```
+
+---
+
+### Option 2: Using pip (Traditional)
+
+```bash
+# Clone repository
+git clone https://github.com/talgoldengoren/Assignment_3_Agentic-Turing-Machine-Development_-CLI-.git
+cd Assignment_3_Agentic-Turing-Machine-Development_-CLI-
+
+# Create virtual environment
+python3 -m venv .venv
+source .venv/bin/activate
 
 # Install dependencies
 pip install -r requirements.txt
 ```
 
-### Run Experiment
+---
+
+## 🏃 Running the Project
+
+### With UV (Recommended)
+
 ```bash
-# Single noise level
+# Activate virtual environment (if not already)
+source .venv/bin/activate
+
+# Run single noise level experiment
+uv run python run_with_skills.py --noise 25
+
+# Run all noise levels (0%, 10%, 20%, 25%, 30%, 40%, 50%)
+uv run python run_with_skills.py --all
+
+# Analyze results (NO API calls needed!)
+uv run python analyze_results_local.py
+
+# Test individual agent
+uv run python test_agent.py english-to-french-translator "Hello world"
+
+# Run tests with coverage
+uv run pytest tests/ --cov=src --cov-report=html -v
+```
+
+### Without UV (Traditional)
+
+```bash
+# Run single noise level
 python3 run_with_skills.py --noise 25
 
-# All noise levels (0%, 10%, 20%, 25%, 30%, 40%, 50%)
+# Run all noise levels (0%, 10%, 20%, 25%, 30%, 40%, 50%)
 python3 run_with_skills.py --all
 ```
 
@@ -102,6 +185,32 @@ cat analysis_results_local.json
   }
 }
 ```
+
+---
+
+## 🔧 UV Commands Reference
+
+| Command | Description |
+|---------|-------------|
+| `uv venv` | Create virtual environment |
+| `uv pip install -e ".[all]"` | Install all dependencies |
+| `uv pip install -e ".[dev]"` | Install dev dependencies only |
+| `uv pip install -e ".[notebook]"` | Install notebook dependencies |
+| `uv run python <script>` | Run Python script |
+| `uv run pytest` | Run tests |
+| `uv pip list` | List installed packages |
+| `uv pip freeze` | Export dependencies |
+| `uv pip sync requirements.txt` | Sync from requirements.txt |
+
+### Why UV? ⚡
+
+| Feature | pip | UV |
+|---------|-----|-----|
+| Install Speed | ~30s | **~2s** |
+| Resolution | Slow | **10-100x faster** |
+| Lock Files | No | **Yes** |
+| Reproducible | Partial | **Full** |
+| Written In | Python | **Rust** |
 
 ---
 
