@@ -34,10 +34,12 @@ class TestLoadSkill:
 
     def test_load_skill_not_found(self, temp_dir, monkeypatch):
         """Test loading non-existent skill"""
+        from errors import SkillNotFoundError
+
         with patch("agent_tester.Path") as mock_path:
             mock_path.return_value.parent.parent = temp_dir
 
-            with pytest.raises(FileNotFoundError):
+            with pytest.raises(SkillNotFoundError):
                 load_skill("non-existent")
 
 
@@ -90,3 +92,93 @@ class TestInvokeAgent:
 
         captured = capsys.readouterr()
         assert "Tokens used" in captured.out
+
+
+class TestInvokeAgentErrorHandling:
+    """Test invoke_agent error handling"""
+
+    def test_invoke_agent_empty_input(self, mock_anthropic_client):
+        """Test handling of empty input"""
+        from errors import ValidationError
+
+        skill = {"name": "test-skill", "content": "Test skill"}
+
+        with pytest.raises(ValidationError):
+            invoke_agent(mock_anthropic_client, skill, "")
+
+    def test_invoke_agent_api_error(self):
+        """Test handling of API errors"""
+        from errors import APIError
+
+        mock_client = Mock()
+        # Simulate API error by raising Exception
+        mock_client.messages.create.side_effect = Exception("API failed")
+
+        skill = {"name": "test-skill", "content": "Test"}
+
+        with pytest.raises(APIError):
+            invoke_agent(mock_client, skill, "test input")
+
+
+class TestMain:
+    """Test the main() function"""
+
+    def test_main_no_args(self, monkeypatch, capsys):
+        """Test main with no arguments shows help"""
+        import sys
+        monkeypatch.setattr(sys, "argv", ["test_agent.py"])
+
+        with pytest.raises(SystemExit) as exc_info:
+            from agent_tester import main
+            main()
+
+        assert exc_info.value.code == 1
+        captured = capsys.readouterr()
+        assert "Usage:" in captured.out
+
+    def test_main_list_agents(self, monkeypatch, mock_skills_dir, capsys):
+        """Test main with --list flag"""
+        import sys
+        from unittest.mock import patch
+
+        monkeypatch.setattr(sys, "argv", ["test_agent.py", "--list"])
+
+        with patch("agent_tester.Path") as mock_path:
+            mock_path.return_value.parent.parent = mock_skills_dir.parent
+            mock_path.return_value.iterdir.return_value = mock_skills_dir.iterdir()
+
+            with pytest.raises(SystemExit) as exc_info:
+                from agent_tester import main
+                main()
+
+            assert exc_info.value.code == 0
+            captured = capsys.readouterr()
+            assert "Available Agents" in captured.out
+
+    def test_main_no_input_text(self, monkeypatch, capsys):
+        """Test main with agent name but no input text"""
+        import sys
+        monkeypatch.setattr(sys, "argv", ["test_agent.py", "test-agent"])
+
+        with pytest.raises(SystemExit) as exc_info:
+            from agent_tester import main
+            main()
+
+        assert exc_info.value.code == 1
+        captured = capsys.readouterr()
+        assert "No input text provided" in captured.out
+
+    def test_main_no_api_key(self, monkeypatch, capsys):
+        """Test main without API key"""
+        import sys
+        import os
+        monkeypatch.setattr(sys, "argv", ["test_agent.py", "test-agent", "test input"])
+        monkeypatch.delenv("ANTHROPIC_API_KEY", raising=False)
+
+        with pytest.raises(SystemExit) as exc_info:
+            from agent_tester import main
+            main()
+
+        assert exc_info.value.code == 1
+        captured = capsys.readouterr()
+        assert "ANTHROPIC_API_KEY" in captured.out
