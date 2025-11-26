@@ -3,8 +3,21 @@
 
 **Purpose:** This document showcases the **creative and smart prompts** used throughout the development of this project, demonstrating advanced prompt engineering techniques and strategic thinking.
 
-**Author:** Tal
-**Date:** November 26, 2025
+### Authors
+
+| Name | Student ID | Email |
+|------|------------|-------|
+| Fouad Azem | 040830861 | Fouad.Azem@gmail.com |
+| Tal Goldengorn | 207042573 | T.goldengoren@gmail.com |
+
+### Course Information
+
+| | |
+|---|---|
+| **Course** | LLM and Multi Agent Orchestration |
+| **Institution** | Reichman University |
+| **Date** | November 2025 |
+| **Instructor** | Dr. Yoram Segal |
 
 ---
 

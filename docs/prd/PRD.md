@@ -1,10 +1,24 @@
 # Product Requirements Document (PRD)
 ## Agentic Turing Machine - Multi-Agent Translation System
 
-**Version:** 1.0
-**Date:** November 26, 2025
-**Author:** Tal
+**Version:** 1.0  
+**Date:** November 2025  
 **Status:** Final
+
+### Authors
+
+| Name | Student ID | Email |
+|------|------------|-------|
+| Fouad Azem | 040830861 | Fouad.Azem@gmail.com |
+| Tal Goldengorn | 207042573 | T.goldengoren@gmail.com |
+
+### Course
+
+| | |
+|---|---|
+| **Course** | LLM and Multi Agent Orchestration |
+| **Institution** | Reichman University |
+| **Instructor** | Dr. Yoram Segal |
 
 **📖 Documentation Links:**
 - [Main README](../../README.md) - Quick start and overview
