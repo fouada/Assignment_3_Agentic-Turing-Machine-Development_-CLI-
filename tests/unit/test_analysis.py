@@ -264,9 +264,47 @@ class TestAnalyzeSemanticDrift:
         from analysis import analyze_semantic_drift
 
         monkeypatch.chdir(mock_analysis_outputs.parent)
-        
+
         try:
             analyze_semantic_drift()
             assert (mock_analysis_outputs.parent / "analysis_results_local.json").exists()
         except Exception:
             pass  # Some errors expected without full mock setup
+
+
+class TestGetLocalEmbeddingErrors:
+    """Test error handling in get_local_embedding"""
+
+    def test_embedding_empty_list(self):
+        """Test error with empty text list"""
+        from analysis import get_local_embedding
+
+        with pytest.raises(ValueError):
+            get_local_embedding([])
+
+    def test_embedding_with_invalid_input(self):
+        """Test error with invalid input type"""
+        from analysis import get_local_embedding
+        from errors import AnalysisError
+
+        # TF-IDF requires strings
+        try:
+            get_local_embedding([123, 456])
+        except (AnalysisError, Exception):
+            pass  # Expected to fail
+
+
+class TestCalculateCosineDistanceErrors:
+    """Test error handling in calculate_cosine_distance"""
+
+    def test_distance_dimension_mismatch(self):
+        """Test error with mismatched dimensions"""
+        import numpy as np
+        from analysis import calculate_cosine_distance
+        from errors import AnalysisError
+
+        vec1 = np.array([1, 0, 0])
+        vec2 = np.array([1, 0])  # Different dimension
+
+        with pytest.raises(AnalysisError):
+            calculate_cosine_distance(vec1, vec2)

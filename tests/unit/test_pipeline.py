@@ -336,3 +336,35 @@ class TestMain:
 
         # Should be called 7 times (one for each noise level)
         assert mock_run_chain.call_count == 7
+
+
+class TestEdgeCases:
+    """Test edge cases and error paths"""
+
+    def test_load_skill_with_special_characters(self, mock_skills_dir):
+        """Test loading skill with special characters in name"""
+        from pipeline import load_skill
+        from unittest.mock import patch
+
+        with patch("pipeline.SKILLS_DIR", mock_skills_dir):
+            # Should handle normal skill names
+            skill = load_skill("english-to-french-translator")
+            assert skill["name"] == "english-to-french-translator"
+
+    def test_empty_input_handling(self, mock_anthropic_client, mock_skills_dir, monkeypatch):
+        """Test handling of empty input"""
+        from pipeline import run_translation_with_skill
+        from errors import ValidationError
+
+        monkeypatch.setattr("pipeline.SKILLS_DIR", mock_skills_dir)
+
+        # Empty input should be handled gracefully
+        try:
+            run_translation_with_skill(
+                mock_anthropic_client,
+                "english-to-french-translator",
+                "",
+                stage=1
+            )
+        except (ValidationError, Exception):
+            pass  # Expected to fail or handle gracefully

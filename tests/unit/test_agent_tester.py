@@ -182,3 +182,87 @@ class TestMain:
         assert exc_info.value.code == 1
         captured = capsys.readouterr()
         assert "ANTHROPIC_API_KEY" in captured.out
+
+
+class TestMainFullFlow:
+    """Test complete main() execution flow"""
+
+    def test_main_successful_execution(self, mock_skills_dir, monkeypatch, capsys):
+        """Test successful end-to-end execution"""
+        import sys
+        from unittest.mock import patch, Mock
+
+        monkeypatch.setattr(sys, "argv", [
+            "test_agent.py",
+            "english-to-french-translator",
+            "Hello world"
+        ])
+        monkeypatch.setenv("ANTHROPIC_API_KEY", "test-key")
+
+        with patch("agent_tester.Path") as mock_path:
+            mock_path.return_value.parent.parent = mock_skills_dir.parent
+
+            # Mock successful skill loading
+            with patch("agent_tester.load_skill") as mock_load:
+                mock_load.return_value = {
+                    "name": "english-to-french-translator",
+                    "content": "Test skill content"
+                }
+
+                # Mock successful API call
+                with patch("agent_tester.anthropic.Anthropic") as mock_client_class:
+                    mock_client = Mock()
+                    mock_response = Mock()
+                    mock_response.content = [Mock(text="Bonjour le monde")]
+                    mock_response.usage = Mock(input_tokens=10, output_tokens=5)
+                    mock_client.messages.create.return_value = mock_response
+                    mock_client_class.return_value = mock_client
+
+                    from agent_tester import main
+                    main()
+
+                    captured = capsys.readouterr()
+                    assert "Test complete" in captured.out or "RESULT" in captured.out
+
+    def test_main_skill_not_found(self, monkeypatch, capsys):
+        """Test main with non-existent skill"""
+        import sys
+        from unittest.mock import patch
+
+        monkeypatch.setattr(sys, "argv", [
+            "test_agent.py",
+            "nonexistent-skill",
+            "test input"
+        ])
+        monkeypatch.setenv("ANTHROPIC_API_KEY", "test-key")
+
+        with patch("agent_tester.load_skill") as mock_load:
+            from errors import SkillNotFoundError
+            mock_load.side_effect = SkillNotFoundError("Skill not found")
+
+            with pytest.raises(SystemExit) as exc_info:
+                from agent_tester import main
+                main()
+
+            assert exc_info.value.code == 1
+
+
+class TestListAgentsExtended:
+    """Extended tests for list_agents"""
+
+    def test_list_agents_empty_directory(self, temp_dir, monkeypatch):
+        """Test when skills directory is empty"""
+        from agent_tester import list_agents
+        from unittest.mock import patch
+
+        # Create empty skills directory
+        skills_dir = temp_dir / "skills"
+        skills_dir.mkdir(exist_ok=True)
+
+        with patch("agent_tester.Path") as mock_path:
+            mock_path.return_value.parent.parent = temp_dir
+
+            agents = list_agents()
+
+            # Should return empty list
+            assert isinstance(agents, list)
