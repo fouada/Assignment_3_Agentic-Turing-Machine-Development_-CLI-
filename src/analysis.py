@@ -666,7 +666,7 @@ def print_summary_statistics(
     logger.info("Summary statistics complete")
 
 
-if __name__ == "__main__":
+def main():
     """Main entry point for semantic drift analysis."""
     # No API key needed!
     logger.info("Starting local semantic drift analysis")
@@ -682,3 +682,9 @@ if __name__ == "__main__":
         print(f"\n❌ Fatal error: {e}")
         exit(1)
 
+
+
+
+
+if __name__ == "__main__":
+    main()
