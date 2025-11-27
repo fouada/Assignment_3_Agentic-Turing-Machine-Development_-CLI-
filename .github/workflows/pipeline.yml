@@ -62,17 +62,18 @@ jobs:
       - name: Check Python syntax
         run: |
           echo "🐍 Checking Python syntax..."
-          python -m py_compile run_with_skills.py
-          python -m py_compile analyze_results_local.py
-          python -m py_compile test_agent.py
+          python -m py_compile scripts/experiment/run_with_skills.py
+          python -m py_compile scripts/experiment/analyze_results.py
+          python -m py_compile tests/test_agent.py
+          python -m py_compile src/*.py
           echo "✅ Python syntax OK!"
       
       - name: Check shell scripts
         run: |
           echo "⚙️ Checking shell scripts..."
-          bash -n run_pipeline.sh || true
-          bash -n install_skills.sh || true
-          bash -n create_agent.sh || true
+          bash -n scripts/experiment/run_pipeline.sh || true
+          bash -n scripts/setup/install_skills.sh || true
+          bash -n scripts/utilities/create_agent.sh || true
           echo "✅ Shell scripts OK!"
 
   # Job 2: Run pytest tests with coverage
@@ -154,7 +155,7 @@ jobs:
         if: steps.check_outputs.outputs.outputs_exist == 'true'
         run: |
           echo "📊 Running local analysis..."
-          python analyze_results_local.py
+          python scripts/experiment/analyze_results.py
           echo "✅ Analysis complete!"
       
       - name: Upload analysis artifacts
@@ -205,16 +206,16 @@ jobs:
           
           if [ "$NOISE" = "all" ]; then
             echo "🚀 Running all noise levels..."
-            python run_with_skills.py --all
+            python scripts/experiment/run_with_skills.py --all
           else
             echo "🚀 Running noise level $NOISE%..."
-            python run_with_skills.py --noise "$NOISE"
+            python scripts/experiment/run_with_skills.py --noise "$NOISE"
           fi
       
       - name: Run analysis
         run: |
           echo "📊 Running analysis..."
-          python analyze_results_local.py
+          python scripts/experiment/analyze_results.py
       
       - name: Upload experiment results
         uses: actions/upload-artifact@v4
@@ -295,5 +296,5 @@ jobs:
           fi
           
           echo "🧪 Testing ${{ matrix.agent }}..."
-          python test_agent.py "${{ matrix.agent }}" "Test input for CI/CD"
+          python tests/test_agent.py "${{ matrix.agent }}" "Test input for CI/CD"
 
