@@ -4,6 +4,12 @@ outputs/
 *.pdf
 analysis_results.json
 
+# BUT include result visualizations for README
+!results/semantic_drift_analysis_local.png
+!results/semantic_drift_analysis_local.pdf
+!results/figures/semantic_drift_analysis_local.png
+!results/figures/semantic_drift_analysis_local.pdf
+
 # Python
 __pycache__/
 *.py[cod]
