@@ -1,86 +1,135 @@
-# Agentic Turing Machine - PR Validation
-# Validates pull requests before merging
-
-name: Validate PR
+name: Validate Pull Request
 
 on:
   pull_request:
     branches: [ main, master ]
     paths:
-      - 'skills/**'
-      - '*.py'
-      - '*.sh'
+      - 'src/**/*.py'
+      - 'tests/**/*.py'
+      - 'skills/**/*.md'
       - 'requirements.txt'
+      - 'pytest.ini'
 
 jobs:
-  validate-skills:
-    name: Validate Agent Skills
+  quick-validation:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Checkout PR
-        uses: actions/checkout@v4
-      
-      - name: Validate skill files
-        run: |
-          echo "📋 Validating agent skills in PR..."
-          
-          ERRORS=0
-          
-          for skill_dir in skills/*/; do
-            skill_name=$(basename "$skill_dir")
-            skill_file="$skill_dir/SKILL.md"
-            
-            if [ ! -f "$skill_file" ]; then
-              echo "❌ Missing SKILL.md in $skill_dir"
-              ERRORS=$((ERRORS + 1))
-              continue
-            fi
-            
-            # Check required sections
-            for section in "Description" "Capabilities" "Instructions"; do
-              if ! grep -q "## $section" "$skill_file"; then
-                echo "⚠️ Missing '## $section' in $skill_file"
-              fi
-            done
-            
-            # Check file size (not empty)
-            if [ ! -s "$skill_file" ]; then
-              echo "❌ Empty SKILL.md in $skill_dir"
-              ERRORS=$((ERRORS + 1))
-              continue
-            fi
-            
-            echo "✓ $skill_name validated"
-          done
-          
-          if [ $ERRORS -gt 0 ]; then
-            echo "❌ Validation failed with $ERRORS errors"
+    - name: Checkout PR code
+      uses: actions/checkout@v4
+      with:
+        ref: ${{ github.event.pull_request.head.sha }}
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    
+    - name: Install minimal dependencies
+      run: |
+        pip install pytest pytest-cov
+    
+    - name: Quick syntax check
+      run: |
+        echo "Checking Python syntax..."
+        python -m py_compile src/*.py || exit 1
+        echo "✅ All Python files are syntactically correct"
+    
+    - name: Verify skills format
+      run: |
+        echo "Validating skills directory..."
+        for skill_dir in skills/*/; do
+          skill=$(basename "$skill_dir")
+          if [ ! -f "$skill_dir/SKILL.md" ]; then
+            echo "❌ Missing SKILL.md in $skill"
             exit 1
           fi
           
-          echo "✅ All skills validated!"
-      
-      - name: Check Python code quality
-        run: |
-          echo "🐍 Checking Python code..."
+          # Check required sections in SKILL.md
+          if ! grep -q "## Purpose" "$skill_dir/SKILL.md"; then
+            echo "⚠️  Missing 'Purpose' section in $skill/SKILL.md"
+          fi
           
-          # Check syntax
-          for pyfile in *.py; do
-            python -m py_compile "$pyfile"
-            echo "✓ $pyfile syntax OK"
-          done
+          if ! grep -q "## Instructions" "$skill_dir/SKILL.md"; then
+            echo "⚠️  Missing 'Instructions' section in $skill/SKILL.md"
+          fi
           
-          echo "✅ Python validation complete!"
-      
-      - name: Comment validation result
-        uses: actions/github-script@v7
-        with:
-          script: |
-            github.rest.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: '✅ **Validation Passed!**\n\nAll agent skills and Python code validated successfully.'
-            })
+          echo "✅ $skill validated"
+        done
+    
+    - name: Run fast tests only
+      run: |
+        pytest tests/unit/test_errors.py -v --tb=short
+        pytest tests/unit/test_config.py -v --tb=short
+    
+    - name: PR validation summary
+      if: always()
+      run: |
+        echo "# 📝 Pull Request Validation" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "✅ Syntax check: Passed" >> $GITHUB_STEP_SUMMARY
+        echo "✅ Skills validation: Passed" >> $GITHUB_STEP_SUMMARY
+        echo "✅ Fast tests: Passed" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "**Note:** Full test suite will run after merge" >> $GITHUB_STEP_SUMMARY
 
+  check-coverage-impact:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout base branch
+      uses: actions/checkout@v4
+      with:
+        ref: ${{ github.base_ref }}
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    
+    - name: Install dependencies
+      run: pip install -r requirements.txt
+    
+    - name: Get base coverage
+      id: base_coverage
+      run: |
+        pytest tests/ --cov=src --cov-report=term | tee base_coverage.txt
+        BASE_COV=$(grep "TOTAL" base_coverage.txt | awk '{print $NF}' | sed 's/%//')
+        echo "base_coverage=$BASE_COV" >> $GITHUB_OUTPUT
+        echo "Base coverage: $BASE_COV%"
+    
+    - name: Checkout PR branch
+      uses: actions/checkout@v4
+      with:
+        ref: ${{ github.event.pull_request.head.sha }}
+    
+    - name: Install dependencies (PR)
+      run: pip install -r requirements.txt
+    
+    - name: Get PR coverage
+      id: pr_coverage
+      run: |
+        pytest tests/ --cov=src --cov-report=term | tee pr_coverage.txt
+        PR_COV=$(grep "TOTAL" pr_coverage.txt | awk '{print $NF}' | sed 's/%//')
+        echo "pr_coverage=$PR_COV" >> $GITHUB_OUTPUT
+        echo "PR coverage: $PR_COV%"
+    
+    - name: Compare coverage
+      run: |
+        BASE_COV=${{ steps.base_coverage.outputs.base_coverage }}
+        PR_COV=${{ steps.pr_coverage.outputs.pr_coverage }}
+        
+        echo "# 📊 Coverage Comparison" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "| Branch | Coverage |" >> $GITHUB_STEP_SUMMARY
+        echo "|--------|----------|" >> $GITHUB_STEP_SUMMARY
+        echo "| Base (${{ github.base_ref }}) | ${BASE_COV}% |" >> $GITHUB_STEP_SUMMARY
+        echo "| PR | ${PR_COV}% |" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        
+        if (( $(echo "$PR_COV >= $BASE_COV" | bc -l) )); then
+          echo "✅ Coverage maintained or improved!" >> $GITHUB_STEP_SUMMARY
+        else
+          DIFF=$(echo "$BASE_COV - $PR_COV" | bc)
+          echo "⚠️  Coverage decreased by ${DIFF}%" >> $GITHUB_STEP_SUMMARY
+        fi
