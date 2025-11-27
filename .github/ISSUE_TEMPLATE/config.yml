@@ -1,0 +1,12 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 📚 Documentation
+    url: https://github.com/talgoldengoren/Assignment_3_Agentic-Turing-Machine-Development_-CLI-/tree/main/docs
+    about: Read the comprehensive documentation
+  - name: 💬 Discussions
+    url: https://github.com/talgoldengoren/Assignment_3_Agentic-Turing-Machine-Development_-CLI-/discussions
+    about: Ask questions and discuss ideas
+  - name: 🔒 Security Issues
+    url: https://github.com/talgoldengoren/Assignment_3_Agentic-Turing-Machine-Development_-CLI-/security/policy
+    about: Report security vulnerabilities privately
+

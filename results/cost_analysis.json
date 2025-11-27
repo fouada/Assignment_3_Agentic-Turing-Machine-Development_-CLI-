@@ -1,5 +1,5 @@
 {
-  "generated_at": "2025-11-27T11:20:47.933411",
+  "generated_at": "2025-11-27T18:56:58.113394",
   "summary": {
     "total_cost": 0.022469999999999997,
     "total_calls": 16,
@@ -21,7 +21,7 @@
   },
   "calls": [
     {
-      "timestamp": "2025-11-27T11:20:43.524253",
+      "timestamp": "2025-11-27T18:56:52.231092",
       "model": "claude-sonnet-4-20250514",
       "stage": 1,
       "noise_level": 0,
@@ -30,7 +30,7 @@
       "cost": 0.0010500000000000002
     },
     {
-      "timestamp": "2025-11-27T11:20:43.660264",
+      "timestamp": "2025-11-27T18:56:52.354289",
       "model": "claude-sonnet-4-20250514",
       "stage": 1,
       "noise_level": 0,
@@ -39,7 +39,7 @@
       "cost": 0.0010500000000000002
     },
     {
-      "timestamp": "2025-11-27T11:20:43.660939",
+      "timestamp": "2025-11-27T18:56:52.355122",
       "model": "claude-sonnet-4-20250514",
       "stage": 2,
       "noise_level": 0,
@@ -48,7 +48,7 @@
       "cost": 0.0010500000000000002
     },
     {
-      "timestamp": "2025-11-27T11:20:43.661287",
+      "timestamp": "2025-11-27T18:56:52.355499",
       "model": "claude-sonnet-4-20250514",
       "stage": 3,
       "noise_level": 0,
@@ -57,7 +57,7 @@
       "cost": 0.0010500000000000002
     },
     {
-      "timestamp": "2025-11-27T11:20:47.655204",
+      "timestamp": "2025-11-27T18:56:57.965190",
       "model": "claude-sonnet-4-20250514",
       "stage": 1,
       "noise_level": 0,
@@ -66,7 +66,7 @@
       "cost": 0.001575
     },
     {
-      "timestamp": "2025-11-27T11:20:47.668751",
+      "timestamp": "2025-11-27T18:56:57.974360",
       "model": "claude-sonnet-4-20250514",
       "stage": 1,
       "noise_level": 0,
@@ -75,7 +75,7 @@
       "cost": 0.001575
     },
     {
-      "timestamp": "2025-11-27T11:20:47.686151",
+      "timestamp": "2025-11-27T18:56:57.982819",
       "model": "claude-sonnet-4-20250514",
       "stage": 1,
       "noise_level": 0,
@@ -84,7 +84,7 @@
       "cost": 0.001575
     },
     {
-      "timestamp": "2025-11-27T11:20:47.690590",
+      "timestamp": "2025-11-27T18:56:57.983246",
       "model": "claude-sonnet-4-20250514",
       "stage": 2,
       "noise_level": 0,
@@ -93,7 +93,7 @@
       "cost": 0.001575
     },
     {
-      "timestamp": "2025-11-27T11:20:47.691587",
+      "timestamp": "2025-11-27T18:56:57.983609",
       "model": "claude-sonnet-4-20250514",
       "stage": 3,
       "noise_level": 0,
@@ -102,7 +102,7 @@
       "cost": 0.001575
     },
     {
-      "timestamp": "2025-11-27T11:20:47.718389",
+      "timestamp": "2025-11-27T18:56:58.002823",
       "model": "claude-sonnet-4-20250514",
       "stage": 1,
       "noise_level": 0,
@@ -111,7 +111,7 @@
       "cost": 0.001575
     },
     {
-      "timestamp": "2025-11-27T11:20:47.739817",
+      "timestamp": "2025-11-27T18:56:58.013931",
       "model": "claude-sonnet-4-20250514",
       "stage": 1,
       "noise_level": 0,
@@ -120,7 +120,7 @@
       "cost": 0.001575
     },
     {
-      "timestamp": "2025-11-27T11:20:47.740227",
+      "timestamp": "2025-11-27T18:56:58.014331",
       "model": "claude-sonnet-4-20250514",
       "stage": 2,
       "noise_level": 0,
@@ -129,7 +129,7 @@
       "cost": 0.00147
     },
     {
-      "timestamp": "2025-11-27T11:20:47.740606",
+      "timestamp": "2025-11-27T18:56:58.014675",
       "model": "claude-sonnet-4-20250514",
       "stage": 3,
       "noise_level": 0,
@@ -138,7 +138,7 @@
       "cost": 0.001365
     },
     {
-      "timestamp": "2025-11-27T11:20:47.849575",
+      "timestamp": "2025-11-27T18:56:58.091326",
       "model": "claude-sonnet-4-20250514",
       "stage": 1,
       "noise_level": 0,
@@ -147,7 +147,7 @@
       "cost": 0.001575
     },
     {
-      "timestamp": "2025-11-27T11:20:47.849943",
+      "timestamp": "2025-11-27T18:56:58.091677",
       "model": "claude-sonnet-4-20250514",
       "stage": 2,
       "noise_level": 0,
@@ -156,7 +156,7 @@
       "cost": 0.00147
     },
     {
-      "timestamp": "2025-11-27T11:20:47.898292",
+      "timestamp": "2025-11-27T18:56:58.091998",
       "model": "claude-sonnet-4-20250514",
       "stage": 3,
       "noise_level": 0,
