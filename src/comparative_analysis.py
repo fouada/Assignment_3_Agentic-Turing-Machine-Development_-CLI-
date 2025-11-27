@@ -54,8 +54,6 @@ class NumpyEncoder(json.JSONEncoder):
             return obj.tolist()
         elif isinstance(obj, (np.bool_, bool)):
             return bool(obj)
-        elif isinstance(obj, np.nan.__class__):
-            return None
         return super().default(obj)
 
 
