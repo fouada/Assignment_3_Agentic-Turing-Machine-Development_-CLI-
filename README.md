@@ -9,49 +9,6 @@
 [![CI/CD](https://img.shields.io/badge/CI%2FCD-passing-success)](./docs/CICD_CHANGES_SUMMARY.md)
 [![MIT-Level](https://img.shields.io/badge/documentation-MIT--Level-purple)](./docs/mit_level/)
 
-> **Multi-agent translation pipeline demonstrating LLM attention mechanism robustness through controlled noise injection and semantic drift analysis**
-
----
-
-## 🌟 **START HERE: MIT-Level Project** 
-
-**👉 New to this project?** Read **[docs/START_HERE_MIT_PRD.md](docs/START_HERE_MIT_PRD.md)** for a quick orientation to the MIT-level enhancements.
-
-**⚡ Quick Setup (2 seconds with UV):**
-```bash
-curl -LsSf https://astral.sh/uv/install.sh | sh
-uv venv && source .venv/bin/activate && uv pip install -e ".[all]"
-```
-
-**Key MIT-Level Documentation:**
-- 🎓 **[MIT-Level Standards Complete](docs/MIT_LEVEL_UV_STANDARDS_COMPLETE.md)** - Executive summary: UV integration, 18x faster builds
-- 📄 **[Quick Start Guide](docs/START_HERE_MIT_PRD.md)** - 5-minute overview of MIT-level enhancements
-- ⚡ **[UV Setup Guide](docs/UV_SETUP_GUIDE.md)** - Ultra-fast package management (10-100x faster than pip)
-- 📋 **[PRD Section 11](docs/prd/PRD.md#11-mit-level-prompt-engineering--strategic-development-process-)** - MIT-level prompt engineering (~8,500 words)
-- 🔍 **[MIT Level Documentation](docs/mit_level/)** - Complete MIT-level summaries and analysis
-- 📚 **[Complete Prompts Library](docs/PROMPTS.md)** - 50+ strategic prompts with detailed explanations
-- 🎯 **[ISO/IEC 25010 Full Compliance](docs/ISO_25010_FULL_COMPLIANCE_ACHIEVED.md)** - 100% quality standards compliance
-
----
-
-## 📑 Table of Contents
-
-- [Abstract](#-abstract)
-- [MIT-Level Features](#-mit-level-features-)
-- [Quick Start](#-quick-start)
-- [System Overview](#-system-overview)
-- [MIT-Level Research Components](#-mit-level-research-components-new)
-- [Interactive Research Dashboard](#-interactive-research-dashboard-new)
-- [Key Findings & Results](#-key-findings--results)
-- [Cost Analysis & Optimization](#-cost-analysis--optimization-recommendations)
-- [Testing & Quality](#-testing--quality)
-- [CI/CD](#-cicd)
-- [Documentation](#-documentation)
-- [Project Structure](#-project-structure)
-- [Installation](#-installation)
-- [Usage](#-usage)
-- [Open Source & Community](#-open-source--community)
-
 ---
 
 ## 📋 Abstract
@@ -184,6 +141,69 @@ This reveals the remarkable robustness of LLM attention mechanisms and has impli
 | **ISO/IEC 25010** | Desired | **100%** | ✅ Full compliance |
 | **Build Speed (UV)** | Fast | **~2s** (vs 38s pip) | ✅ 18x faster |
 | **Original Innovations** | Novel | **4 new methods** | ✅ First-of-kind |
+
+---
+
+## 📑 Table of Contents
+
+- [Abstract](#-abstract)
+- [Quick Start](#-quick-start)
+- [MIT-Level Features](#-mit-level-features-)
+- [System Overview](#-system-overview)
+- [MIT-Level Research Components](#-mit-level-research-components-new)
+- [MIT-Level Original Innovations](#-mit-level-original-innovations-new)
+- [Interactive Research Dashboard](#-interactive-research-dashboard-new)
+- [Key Findings & Results](#-key-findings--results)
+- [Cost Analysis & Optimization](#-cost-analysis--optimization-recommendations)
+- [Testing & Quality](#-testing--quality)
+- [CI/CD](#-cicd)
+- [Documentation](#-documentation)
+- [Project Structure](#-project-structure)
+- [Installation](#-installation)
+- [Usage](#-usage)
+- [Open Source & Community](#-open-source--community)
+- [Authors & Academic Context](#-authors--academic-context)
+
+---
+
+## 🚀 Quick Start
+
+### ⚡ Fast Installation with UV (Recommended - 18x faster)
+
+```bash
+# Install UV (ultra-fast Python package manager)
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# Clone the repository
+git clone https://github.com/talgoldengoren/Assignment_3_Agentic-Turing-Machine-Development_-CLI-.git
+cd Assignment_3_Agentic-Turing-Machine-Development_-CLI-
+
+# Setup environment and install (⚡ ~2 seconds!)
+uv venv && source .venv/bin/activate && uv pip install -e ".[all]"
+
+# Set your API key
+export ANTHROPIC_API_KEY='your-key-here'
+
+# Run an experiment
+python scripts/experiment/run_with_skills.py --noise 25
+
+# Analyze results (NO API calls needed!)
+python scripts/experiment/analyze_results.py
+
+# Launch interactive dashboard
+streamlit run src/dashboard.py
+```
+
+### 📚 Key Documentation Links
+
+| Document | Description |
+|----------|-------------|
+| 🎓 **[START_HERE_MIT_PRD.md](docs/START_HERE_MIT_PRD.md)** | 5-minute orientation to MIT-level enhancements |
+| ⚡ **[UV_SETUP_GUIDE.md](docs/UV_SETUP_GUIDE.md)** | Ultra-fast package management guide |
+| 📋 **[PRD Section 11](docs/prd/PRD.md#11-mit-level-prompt-engineering--strategic-development-process-)** | MIT-level prompt engineering (~8,500 words) |
+| 🔍 **[MIT Level Docs](docs/mit_level/)** | Complete MIT-level summaries and analysis |
+| 📚 **[PROMPTS.md](docs/PROMPTS.md)** | 50+ strategic prompts with explanations |
+| 🎯 **[ISO 25010 Compliance](docs/ISO_25010_FULL_COMPLIANCE_ACHIEVED.md)** | 100% quality standards compliance |
 
 ---
 
