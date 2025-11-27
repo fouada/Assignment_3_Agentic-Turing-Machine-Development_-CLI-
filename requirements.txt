@@ -1,27 +1,36 @@
-# Python Dependencies for Agentic Turing Machine Analysis
-# Install with: pip install -r requirements.txt
+# Agentic Turing Machine - MIT-Level Project Dependencies
+# =========================================================
+#
+# RECOMMENDED: Use UV (ultra-fast Python package manager)
+#   uv pip install -e ".[all]"
+#
+# ALTERNATIVE: Traditional pip (slower)
+#   pip install -r requirements.txt
+#
+# This file is auto-generated from pyproject.toml for compatibility.
+# For MIT-level projects, prefer pyproject.toml as the single source of truth.
+#
+# =========================================================
 
 # Core dependencies
 anthropic>=0.18.0
 numpy>=1.24.0
 matplotlib>=3.7.0
 scikit-learn>=1.3.0
-
-# Configuration management
+scipy>=1.11.0
 pyyaml>=6.0.0
 python-dotenv>=1.0.0
 
-# Testing dependencies
+# Development & Testing
 pytest>=7.4.0
 pytest-cov>=4.1.0
 pytest-mock>=3.11.0
 pytest-asyncio>=0.21.0
 coverage>=7.3.0
 
-# Documentation dependencies
+# Documentation & Analysis
 jupyter>=1.0.0
 jupyterlab>=4.0.0
 notebook>=7.0.0
 ipykernel>=6.25.0
-
 

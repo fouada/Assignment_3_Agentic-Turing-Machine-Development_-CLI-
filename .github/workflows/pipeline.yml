@@ -64,6 +64,7 @@ jobs:
           echo "🐍 Checking Python syntax..."
           python -m py_compile scripts/experiment/run_with_skills.py
           python -m py_compile scripts/experiment/analyze_results.py
+          python -m py_compile scripts/experiment/run_research_analysis.py
           python -m py_compile tests/test_agent.py
           python -m py_compile src/*.py
           echo "✅ Python syntax OK!"
@@ -92,11 +93,14 @@ jobs:
           python-version: ${{ env.PYTHON_VERSION }}
           cache: 'pip'
 
-      - name: Install dependencies
+      - name: Install UV
         run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-          pip install pytest pytest-cov pytest-mock
+          curl -LsSf https://astral.sh/uv/install.sh | sh
+          echo "$HOME/.cargo/bin" >> $GITHUB_PATH
+      
+      - name: Install dependencies with UV
+        run: |
+          uv pip install --system -e ".[all]"
 
       - name: Run tests with coverage
         run: |
@@ -135,10 +139,14 @@ jobs:
           python-version: ${{ env.PYTHON_VERSION }}
           cache: 'pip'
       
-      - name: Install dependencies
+      - name: Install UV
         run: |
-          python -m pip install --upgrade pip
-          pip install numpy matplotlib scikit-learn
+          curl -LsSf https://astral.sh/uv/install.sh | sh
+          echo "$HOME/.cargo/bin" >> $GITHUB_PATH
+      
+      - name: Install dependencies with UV
+        run: |
+          uv pip install --system numpy matplotlib scikit-learn scipy
       
       - name: Check for existing outputs
         id: check_outputs
@@ -151,12 +159,19 @@ jobs:
             echo "⚠️ No outputs found - skipping analysis"
           fi
       
-      - name: Run analysis
+      - name: Run standard analysis
         if: steps.check_outputs.outputs.outputs_exist == 'true'
         run: |
-          echo "📊 Running local analysis..."
+          echo "📊 Running standard analysis..."
           python scripts/experiment/analyze_results.py
-          echo "✅ Analysis complete!"
+          echo "✅ Standard analysis complete!"
+      
+      - name: Run research analysis suite
+        if: steps.check_outputs.outputs.outputs_exist == 'true'
+        run: |
+          echo "🔬 Running MIT-level research analysis..."
+          python scripts/experiment/run_research_analysis.py --skip-standard
+          echo "✅ Research analysis complete!"
       
       - name: Upload analysis artifacts
         if: steps.check_outputs.outputs.outputs_exist == 'true'
@@ -167,6 +182,9 @@ jobs:
             semantic_drift_analysis_local.png
             semantic_drift_analysis_local.pdf
             analysis_results_local.json
+            results/sensitivity_analysis.json
+            results/comparative_analysis.json
+            results/research_analysis_summary.json
           retention-days: 30
 
   # Job 3: Run full experiments (requires API key)
@@ -186,10 +204,14 @@ jobs:
           python-version: ${{ env.PYTHON_VERSION }}
           cache: 'pip'
       
-      - name: Install dependencies
+      - name: Install UV
         run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          curl -LsSf https://astral.sh/uv/install.sh | sh
+          echo "$HOME/.cargo/bin" >> $GITHUB_PATH
+      
+      - name: Install dependencies with UV
+        run: |
+          uv pip install --system -e ".[all]"
       
       - name: Run experiments
         env:
@@ -282,9 +304,14 @@ jobs:
         with:
           python-version: ${{ env.PYTHON_VERSION }}
       
-      - name: Install dependencies
+      - name: Install UV
         run: |
-          pip install anthropic
+          curl -LsSf https://astral.sh/uv/install.sh | sh
+          echo "$HOME/.cargo/bin" >> $GITHUB_PATH
+      
+      - name: Install dependencies with UV
+        run: |
+          uv pip install --system anthropic
       
       - name: Test ${{ matrix.agent }}
         env:
