@@ -147,7 +147,9 @@ This reveals the remarkable robustness of LLM attention mechanisms and has impli
 ## 📑 Table of Contents
 
 - [Abstract](#-abstract)
+- [Installation & Dependencies](#-installation--dependencies)
 - [Quick Start](#-quick-start)
+- [Usage](#-usage)
 - [MIT-Level Features](#-mit-level-features-)
 - [System Overview](#-system-overview)
 - [MIT-Level Research Components](#-mit-level-research-components-new)
@@ -159,33 +161,91 @@ This reveals the remarkable robustness of LLM attention mechanisms and has impli
 - [CI/CD](#-cicd)
 - [Documentation](#-documentation)
 - [Project Structure](#-project-structure)
-- [Installation](#-installation)
-- [Usage](#-usage)
 - [Open Source & Community](#-open-source--community)
 - [Authors & Academic Context](#-authors--academic-context)
 
 ---
 
-## 🚀 Quick Start
+## 💻 Installation & Dependencies
 
-### ⚡ Fast Installation with UV (Recommended - 18x faster)
+### System Requirements
+
+| Requirement | Details |
+|-------------|---------|
+| **Python** | 3.11+ (required) |
+| **OS** | Linux, macOS, or Windows with WSL |
+| **API Key** | Anthropic Claude API key |
+| **Memory** | 2GB+ RAM |
+| **Disk** | 500MB free space |
+
+### Option 1: Using UV (Recommended) ⚡ **18x FASTER**
+
+**Why UV?** Ultra-fast Python package installer (10-100x faster than pip). Used by Meta, Anthropic, and top research institutions.
 
 ```bash
-# Install UV (ultra-fast Python package manager)
+# Install UV (one-time setup)
 curl -LsSf https://astral.sh/uv/install.sh | sh
 
-# Clone the repository
+# Clone repository
 git clone https://github.com/talgoldengoren/Assignment_3_Agentic-Turing-Machine-Development_-CLI-.git
 cd Assignment_3_Agentic-Turing-Machine-Development_-CLI-
 
-# Setup environment and install (⚡ ~2 seconds!)
-uv venv && source .venv/bin/activate && uv pip install -e ".[all]"
+# Create venv and install ALL dependencies (⚡ ~2 seconds!)
+uv venv
+source .venv/bin/activate
+uv pip install -e ".[all]"
 
-# Set your API key
+# Set API key
 export ANTHROPIC_API_KEY='your-key-here'
 
-# Run an experiment
+# ✅ Ready to go!
+```
+
+**📚 Complete Guide:** [docs/UV_SETUP_GUIDE.md](docs/UV_SETUP_GUIDE.md)
+
+### Option 2: Traditional pip (Slower, ~38 seconds)
+
+```bash
+# Clone repository
+git clone https://github.com/talgoldengoren/Assignment_3_Agentic-Turing-Machine-Development_-CLI-.git
+cd Assignment_3_Agentic-Turing-Machine-Development_-CLI-
+
+# Create virtual environment
+python3 -m venv .venv
+source .venv/bin/activate
+
+# Install dependencies (⏳ takes ~30-60 seconds)
+pip install -r requirements.txt
+
+# Set API key
+export ANTHROPIC_API_KEY='your-key-here'
+```
+
+**Note:** UV is **18x faster** and provides better reproducibility. For MIT-level projects, UV is the recommended standard.
+
+### Docker Installation
+
+```bash
+# Build container
+docker build -t agentic-turing-machine .
+
+# Run experiment
+docker run -e ANTHROPIC_API_KEY='your-key' agentic-turing-machine
+
+# Or use docker-compose
+docker-compose up agent-pipeline
+```
+
+---
+
+## 🚀 Quick Start
+
+```bash
+# Run single noise level experiment
 python scripts/experiment/run_with_skills.py --noise 25
+
+# Run all noise levels (0, 10, 20, 25, 30, 40, 50)
+python scripts/experiment/run_with_skills.py --all
 
 # Analyze results (NO API calls needed!)
 python scripts/experiment/analyze_results.py
@@ -204,6 +264,43 @@ streamlit run src/dashboard.py
 | 🔍 **[MIT Level Docs](docs/mit_level/)** | Complete MIT-level summaries and analysis |
 | 📚 **[PROMPTS.md](docs/PROMPTS.md)** | 50+ strategic prompts with explanations |
 | 🎯 **[ISO 25010 Compliance](docs/ISO_25010_FULL_COMPLIANCE_ACHIEVED.md)** | 100% quality standards compliance |
+
+---
+
+## 🎮 Usage
+
+### Basic Usage
+
+```bash
+# Run single noise level experiment
+python3 scripts/experiment/run_with_skills.py --noise 25
+
+# Run all noise levels (0, 10, 20, 25, 30, 40, 50)
+python3 scripts/experiment/run_with_skills.py --all
+
+# Analyze results (NO API calls needed!)
+python3 scripts/experiment/analyze_results.py
+```
+
+### Advanced Usage
+
+```bash
+# Test individual agent
+python3 src/agent_tester.py english-to-french-translator "Hello world"
+
+# List available agents
+python3 src/agent_tester.py --list
+
+# Run tests with coverage
+pytest tests/ --cov=src --cov-report=html -v
+
+# Open coverage report
+open htmlcov/index.html
+
+# Run with detailed logging
+export LOG_LEVEL=DEBUG
+python3 scripts/experiment/run_with_skills.py --all
+```
 
 ---
 
@@ -263,64 +360,6 @@ This project demonstrates **MIT-level strategic thinking** through:
 | **[ISO/IEC 25010 Compliance](docs/ISO_25010_FULL_COMPLIANCE_ACHIEVED.md)** | 100% quality standards | Production-ready certification |
 
 **Total MIT-Level Content:** ~25,500 words demonstrating strategic thinking, decision frameworks, and knowledge transfer.
-
----
-
-## 🚀 Quick Start
-
-### Prerequisites
-```bash
-# Python 3.11+ required
-python3 --version
-
-# Claude API key needed
-export ANTHROPIC_API_KEY='your-key-here'
-```
-
-### Fast Installation with UV ⚡ (Recommended)
-
-[UV](https://docs.astral.sh/uv/) is an extremely fast Python package installer, **10-100x faster than pip**.
-
-```bash
-# Install UV
-curl -LsSf https://astral.sh/uv/install.sh | sh
-
-# Clone and setup
-git clone https://github.com/talgoldengoren/Assignment_3_Agentic-Turing-Machine-Development_-CLI-.git
-cd Assignment_3_Agentic-Turing-Machine-Development_-CLI-
-
-# Create venv and install (FAST! ~2 seconds)
-uv venv
-source .venv/bin/activate
-uv pip install -e ".[all]"
-
-# Set API key
-export ANTHROPIC_API_KEY='your-key-here'
-
-# Run experiment
-uv run python scripts/experiment/run_with_skills.py --noise 25
-
-# Analyze results (NO API calls needed!)
-uv run python scripts/experiment/analyze_results.py
-```
-
-### Traditional Installation
-
-```bash
-# Clone repository
-git clone https://github.com/talgoldengoren/Assignment_3_Agentic-Turing-Machine-Development_-CLI-.git
-cd Assignment_3_Agentic-Turing-Machine-Development_-CLI-
-
-# Create virtual environment
-python3 -m venv .venv
-source .venv/bin/activate
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Run experiment
-python3 scripts/experiment/run_with_skills.py --noise 25
-```
 
 ---
 
@@ -783,9 +822,11 @@ The dashboard requires the following data files (generated by running experiment
 
 ### Semantic Drift Visualization
 
-![Semantic Drift Analysis](./assets/graphs/semantic_drift_analysis_local.png)
+![Semantic Drift Analysis](./results/semantic_drift_analysis_local.png)
 
 *Figure 1: Semantic drift metrics across different noise levels (0-50%). Generated by `analyze_results.py`*
+
+📄 **PDF Version:** [semantic_drift_analysis_local.pdf](./results/semantic_drift_analysis_local.pdf)
 
 ### Latest Experiment Results
 
@@ -1131,113 +1172,6 @@ Assignment_3_Agentic-Turing-Machine-Development_-CLI-/
 ├── 📄 Dockerfile                        # Container definition
 ├── 📄 docker-compose.yml                # Multi-container orchestration
 └── 📄 .env.example                      # Environment template
-```
-
----
-
-## 💻 Installation
-
-### System Requirements
-
-- **Python:** 3.11+ (required)
-- **OS:** Linux, macOS, or Windows with WSL
-- **API Key:** Anthropic Claude API key
-- **Memory:** 2GB+ RAM
-- **Disk:** 500MB free space
-
-### Option 1: Using UV (Recommended) ⚡ **18x FASTER**
-
-**Why UV?** Ultra-fast Python package installer (10-100x faster than pip). Used by Meta, Anthropic, and top research institutions.
-
-```bash
-# Install UV (one-time setup)
-curl -LsSf https://astral.sh/uv/install.sh | sh
-
-# Clone repository
-git clone https://github.com/talgoldengoren/Assignment_3_Agentic-Turing-Machine-Development_-CLI-.git
-cd Assignment_3_Agentic-Turing-Machine-Development_-CLI-
-
-# Create venv and install ALL dependencies (⚡ ~2 seconds!)
-uv venv
-source .venv/bin/activate
-uv pip install -e ".[all]"
-
-# Set API key
-export ANTHROPIC_API_KEY='your-key-here'
-
-# ✅ Ready to go!
-```
-
-**📚 Complete Guide:** [docs/UV_SETUP_GUIDE.md](docs/UV_SETUP_GUIDE.md)
-
-### Option 2: Traditional pip (Slower, ~38 seconds)
-
-```bash
-# Clone repository
-git clone https://github.com/talgoldengoren/Assignment_3_Agentic-Turing-Machine-Development_-CLI-.git
-cd Assignment_3_Agentic-Turing-Machine-Development_-CLI-
-
-# Create virtual environment
-python3 -m venv .venv
-source .venv/bin/activate
-
-# Install dependencies (⏳ takes ~30-60 seconds)
-pip install -r requirements.txt
-
-# Set API key
-export ANTHROPIC_API_KEY='your-key-here'
-```
-
-**Note:** UV is **18x faster** and provides better reproducibility. For MIT-level projects, UV is the recommended standard.
-
----
-
-## 🎮 Usage
-
-### Basic Usage
-
-```bash
-# Run single noise level experiment
-python3 scripts/experiment/run_with_skills.py --noise 25
-
-# Run all noise levels (0, 10, 20, 25, 30, 40, 50)
-python3 scripts/experiment/run_with_skills.py --all
-
-# Analyze results (NO API calls needed!)
-python3 scripts/experiment/analyze_results.py
-```
-
-### Advanced Usage
-
-```bash
-# Test individual agent
-python3 src/agent_tester.py english-to-french-translator "Hello world"
-
-# List available agents
-python3 src/agent_tester.py --list
-
-# Run tests with coverage
-pytest tests/ --cov=src --cov-report=html -v
-
-# Open coverage report
-open htmlcov/index.html
-
-# Run with detailed logging
-export LOG_LEVEL=DEBUG
-python3 scripts/experiment/run_with_skills.py --all
-```
-
-### Docker Usage
-
-```bash
-# Build container
-docker build -t agentic-turing-machine .
-
-# Run experiment
-docker run -e ANTHROPIC_API_KEY='your-key' agentic-turing-machine
-
-# Or use docker-compose
-docker-compose up agent-pipeline
 ```
 
 ---
