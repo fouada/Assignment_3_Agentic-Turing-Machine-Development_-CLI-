@@ -109,7 +109,7 @@ jobs:
           echo "✅ All tests passed with required coverage!"
 
       - name: Upload coverage report
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: coverage-report
           path: |
@@ -175,7 +175,7 @@ jobs:
       
       - name: Upload analysis artifacts
         if: steps.check_outputs.outputs.outputs_exist == 'true'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: analysis-results
           path: |
@@ -240,7 +240,7 @@ jobs:
           python scripts/experiment/analyze_results.py
       
       - name: Upload experiment results
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: experiment-results
           path: |
