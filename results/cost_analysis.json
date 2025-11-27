@@ -1,168 +1,219 @@
 {
-  "generated_at": "2025-11-27T18:56:58.113394",
+  "generated_at": "2025-11-28T00:46:53.123154",
   "summary": {
-    "total_cost": 0.022469999999999997,
-    "total_calls": 16,
+    "total_cost": 0.091974,
+    "total_calls": 21,
     "total_tokens": {
-      "input": 2140,
-      "output": 1070,
-      "total": 3210
+      "input": 26108,
+      "output": 910,
+      "total": 27018
     },
     "cost_by_stage": {
-      "1": 0.011550000000000001,
-      "2": 0.005565,
-      "3": 0.005355
+      "1": 0.023955,
+      "2": 0.033894,
+      "3": 0.034125
     },
     "cost_by_noise_level": {
-      "0": 0.022469999999999997
+      "0": 0.013118999999999999,
+      "10": 0.013125000000000001,
+      "20": 0.013131,
+      "25": 0.013143000000000002,
+      "30": 0.013143000000000002,
+      "40": 0.013155,
+      "50": 0.013158
     },
-    "average_cost_per_call": 0.0014043749999999998,
+    "average_cost_per_call": 0.004379714285714285,
     "currency": "USD"
   },
   "calls": [
     {
-      "timestamp": "2025-11-27T18:56:52.231092",
+      "timestamp": "2025-11-28T00:45:54.712681",
       "model": "claude-sonnet-4-20250514",
       "stage": 1,
       "noise_level": 0,
-      "input_tokens": 100,
-      "output_tokens": 50,
-      "cost": 0.0010500000000000002
+      "input_tokens": 939,
+      "output_tokens": 39,
+      "cost": 0.003402
     },
     {
-      "timestamp": "2025-11-27T18:56:52.354289",
-      "model": "claude-sonnet-4-20250514",
-      "stage": 1,
-      "noise_level": 0,
-      "input_tokens": 100,
-      "output_tokens": 50,
-      "cost": 0.0010500000000000002
-    },
-    {
-      "timestamp": "2025-11-27T18:56:52.355122",
+      "timestamp": "2025-11-28T00:45:57.294707",
       "model": "claude-sonnet-4-20250514",
       "stage": 2,
       "noise_level": 0,
-      "input_tokens": 100,
-      "output_tokens": 50,
-      "cost": 0.0010500000000000002
-    },
-    {
-      "timestamp": "2025-11-27T18:56:52.355499",
-      "model": "claude-sonnet-4-20250514",
-      "stage": 3,
-      "noise_level": 0,
-      "input_tokens": 100,
-      "output_tokens": 50,
-      "cost": 0.0010500000000000002
-    },
-    {
-      "timestamp": "2025-11-27T18:56:57.965190",
-      "model": "claude-sonnet-4-20250514",
-      "stage": 1,
-      "noise_level": 0,
-      "input_tokens": 150,
-      "output_tokens": 75,
-      "cost": 0.001575
-    },
-    {
-      "timestamp": "2025-11-27T18:56:57.974360",
-      "model": "claude-sonnet-4-20250514",
-      "stage": 1,
-      "noise_level": 0,
-      "input_tokens": 150,
-      "output_tokens": 75,
-      "cost": 0.001575
-    },
-    {
-      "timestamp": "2025-11-27T18:56:57.982819",
-      "model": "claude-sonnet-4-20250514",
-      "stage": 1,
-      "noise_level": 0,
-      "input_tokens": 150,
-      "output_tokens": 75,
-      "cost": 0.001575
-    },
-    {
-      "timestamp": "2025-11-27T18:56:57.983246",
-      "model": "claude-sonnet-4-20250514",
-      "stage": 2,
-      "noise_level": 0,
-      "input_tokens": 150,
-      "output_tokens": 75,
-      "cost": 0.001575
-    },
-    {
-      "timestamp": "2025-11-27T18:56:57.983609",
-      "model": "claude-sonnet-4-20250514",
-      "stage": 3,
-      "noise_level": 0,
-      "input_tokens": 150,
-      "output_tokens": 75,
-      "cost": 0.001575
-    },
-    {
-      "timestamp": "2025-11-27T18:56:58.002823",
-      "model": "claude-sonnet-4-20250514",
-      "stage": 1,
-      "noise_level": 0,
-      "input_tokens": 150,
-      "output_tokens": 75,
-      "cost": 0.001575
-    },
-    {
-      "timestamp": "2025-11-27T18:56:58.013931",
-      "model": "claude-sonnet-4-20250514",
-      "stage": 1,
-      "noise_level": 0,
-      "input_tokens": 150,
-      "output_tokens": 75,
-      "cost": 0.001575
-    },
-    {
-      "timestamp": "2025-11-27T18:56:58.014331",
-      "model": "claude-sonnet-4-20250514",
-      "stage": 2,
-      "noise_level": 0,
-      "input_tokens": 140,
+      "input_tokens": 1264,
       "output_tokens": 70,
-      "cost": 0.00147
+      "cost": 0.004842
     },
     {
-      "timestamp": "2025-11-27T18:56:58.014675",
+      "timestamp": "2025-11-28T00:46:00.092621",
       "model": "claude-sonnet-4-20250514",
       "stage": 3,
       "noise_level": 0,
-      "input_tokens": 130,
-      "output_tokens": 65,
-      "cost": 0.001365
+      "input_tokens": 1520,
+      "output_tokens": 21,
+      "cost": 0.004875
     },
     {
-      "timestamp": "2025-11-27T18:56:58.091326",
+      "timestamp": "2025-11-28T00:46:02.890119",
       "model": "claude-sonnet-4-20250514",
       "stage": 1,
-      "noise_level": 0,
-      "input_tokens": 150,
-      "output_tokens": 75,
-      "cost": 0.001575
+      "noise_level": 10,
+      "input_tokens": 941,
+      "output_tokens": 39,
+      "cost": 0.003408
     },
     {
-      "timestamp": "2025-11-27T18:56:58.091677",
+      "timestamp": "2025-11-28T00:46:05.759657",
       "model": "claude-sonnet-4-20250514",
       "stage": 2,
-      "noise_level": 0,
-      "input_tokens": 140,
+      "noise_level": 10,
+      "input_tokens": 1264,
       "output_tokens": 70,
-      "cost": 0.00147
+      "cost": 0.004842
     },
     {
-      "timestamp": "2025-11-27T18:56:58.091998",
+      "timestamp": "2025-11-28T00:46:08.526840",
       "model": "claude-sonnet-4-20250514",
       "stage": 3,
-      "noise_level": 0,
-      "input_tokens": 130,
-      "output_tokens": 65,
-      "cost": 0.001365
+      "noise_level": 10,
+      "input_tokens": 1520,
+      "output_tokens": 21,
+      "cost": 0.004875
+    },
+    {
+      "timestamp": "2025-11-28T00:46:11.276402",
+      "model": "claude-sonnet-4-20250514",
+      "stage": 1,
+      "noise_level": 20,
+      "input_tokens": 943,
+      "output_tokens": 39,
+      "cost": 0.003414
+    },
+    {
+      "timestamp": "2025-11-28T00:46:14.102278",
+      "model": "claude-sonnet-4-20250514",
+      "stage": 2,
+      "noise_level": 20,
+      "input_tokens": 1264,
+      "output_tokens": 70,
+      "cost": 0.004842
+    },
+    {
+      "timestamp": "2025-11-28T00:46:17.441776",
+      "model": "claude-sonnet-4-20250514",
+      "stage": 3,
+      "noise_level": 20,
+      "input_tokens": 1520,
+      "output_tokens": 21,
+      "cost": 0.004875
+    },
+    {
+      "timestamp": "2025-11-28T00:46:20.768296",
+      "model": "claude-sonnet-4-20250514",
+      "stage": 1,
+      "noise_level": 25,
+      "input_tokens": 947,
+      "output_tokens": 39,
+      "cost": 0.0034260000000000002
+    },
+    {
+      "timestamp": "2025-11-28T00:46:24.591551",
+      "model": "claude-sonnet-4-20250514",
+      "stage": 2,
+      "noise_level": 25,
+      "input_tokens": 1264,
+      "output_tokens": 70,
+      "cost": 0.004842
+    },
+    {
+      "timestamp": "2025-11-28T00:46:27.679088",
+      "model": "claude-sonnet-4-20250514",
+      "stage": 3,
+      "noise_level": 25,
+      "input_tokens": 1520,
+      "output_tokens": 21,
+      "cost": 0.004875
+    },
+    {
+      "timestamp": "2025-11-28T00:46:30.419709",
+      "model": "claude-sonnet-4-20250514",
+      "stage": 1,
+      "noise_level": 30,
+      "input_tokens": 947,
+      "output_tokens": 39,
+      "cost": 0.0034260000000000002
+    },
+    {
+      "timestamp": "2025-11-28T00:46:33.344055",
+      "model": "claude-sonnet-4-20250514",
+      "stage": 2,
+      "noise_level": 30,
+      "input_tokens": 1264,
+      "output_tokens": 70,
+      "cost": 0.004842
+    },
+    {
+      "timestamp": "2025-11-28T00:46:36.304111",
+      "model": "claude-sonnet-4-20250514",
+      "stage": 3,
+      "noise_level": 30,
+      "input_tokens": 1520,
+      "output_tokens": 21,
+      "cost": 0.004875
+    },
+    {
+      "timestamp": "2025-11-28T00:46:39.199549",
+      "model": "claude-sonnet-4-20250514",
+      "stage": 1,
+      "noise_level": 40,
+      "input_tokens": 951,
+      "output_tokens": 39,
+      "cost": 0.003438
+    },
+    {
+      "timestamp": "2025-11-28T00:46:41.903918",
+      "model": "claude-sonnet-4-20250514",
+      "stage": 2,
+      "noise_level": 40,
+      "input_tokens": 1264,
+      "output_tokens": 70,
+      "cost": 0.004842
+    },
+    {
+      "timestamp": "2025-11-28T00:46:44.616583",
+      "model": "claude-sonnet-4-20250514",
+      "stage": 3,
+      "noise_level": 40,
+      "input_tokens": 1520,
+      "output_tokens": 21,
+      "cost": 0.004875
+    },
+    {
+      "timestamp": "2025-11-28T00:46:47.489956",
+      "model": "claude-sonnet-4-20250514",
+      "stage": 1,
+      "noise_level": 50,
+      "input_tokens": 952,
+      "output_tokens": 39,
+      "cost": 0.003441
+    },
+    {
+      "timestamp": "2025-11-28T00:46:50.306547",
+      "model": "claude-sonnet-4-20250514",
+      "stage": 2,
+      "noise_level": 50,
+      "input_tokens": 1264,
+      "output_tokens": 70,
+      "cost": 0.004842
+    },
+    {
+      "timestamp": "2025-11-28T00:46:53.121528",
+      "model": "claude-sonnet-4-20250514",
+      "stage": 3,
+      "noise_level": 50,
+      "input_tokens": 1520,
+      "output_tokens": 21,
+      "cost": 0.004875
     }
   ]
 }
