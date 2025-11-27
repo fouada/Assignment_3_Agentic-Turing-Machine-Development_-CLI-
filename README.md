@@ -45,7 +45,7 @@ At its core, the Agentic Turing Machine is a **multi-agent translation pipeline*
 - **Noise Injection**: Systematically introduces spelling errors (0-50%) to test robustness
 - **Semantic Drift Measurement**: Quantifies meaning loss using TF-IDF embeddings and cosine distance
 - **Reproducible Experiments**: Run experiments at any noise level with `python scripts/experiment/run_with_skills.py --noise 25`
-- **Offline Analysis**: Analyze results without API calls using `python scripts/experiment/analyze_results.py`
+- **Offline Analysis**: Analyze results without API calls using `python scripts/experiment/analyze_results.py`.
 
 ---
 
