@@ -290,10 +290,10 @@ OUTPUT: Cost model, quality impact, recommendation
 
 ### For You (Reader)
 
-1. **Read:** `docs/mit_level/FINAL_MIT_LEVEL_PRD_SUMMARY.md` (5 min)
-2. **Confirm:** `docs/mit_level/ANSWER_MIT_PRD_LEVEL_EXISTS.md` (10 min)
+1. **Read:** `FINAL_MIT_LEVEL_PRD_SUMMARY.md` (5 min)
+2. **Confirm:** `ANSWER_MIT_PRD_LEVEL_EXISTS.md` (10 min)
 3. **Explore:** `docs/prd/PRD.md` → Section 11 (30 min)
-4. **Deep Dive:** `docs/mit_level/MIT_PRD_SECTION_11_SUMMARY.md` (optional, 60 min)
+4. **Deep Dive:** `MIT_PRD_SECTION_11_SUMMARY.md` (optional, 60 min)
 
 ### For Sharing
 
@@ -331,10 +331,11 @@ OUTPUT: Cost model, quality impact, recommendation
 - **📋 Prompt Library:** [docs/PROMPTS.md](docs/PROMPTS.md) (50+ prompts)
 - **📖 README:** [README.md](README.md) (updated with MIT section)
 
-### New Summaries (Today)
-- **📊 Executive Summary:** [FINAL_MIT_LEVEL_PRD_SUMMARY.md](docs/mit_level/FINAL_MIT_LEVEL_PRD_SUMMARY.md)
-- **🔍 Deep Dive:** [MIT_PRD_SECTION_11_SUMMARY.md](docs/mit_level/MIT_PRD_SECTION_11_SUMMARY.md)
-- **✅ Direct Answer:** [ANSWER_MIT_PRD_LEVEL_EXISTS.md](docs/mit_level/ANSWER_MIT_PRD_LEVEL_EXISTS.md)
+### MIT-Level Documentation
+- **📊 Executive Summary:** [docs/mit_level/FINAL_MIT_LEVEL_PRD_SUMMARY.md](docs/mit_level/FINAL_MIT_LEVEL_PRD_SUMMARY.md)
+- **🔍 Deep Dive:** [docs/mit_level/MIT_PRD_SECTION_11_SUMMARY.md](docs/mit_level/MIT_PRD_SECTION_11_SUMMARY.md)
+- **✅ Direct Answer:** [docs/mit_level/ANSWER_MIT_PRD_LEVEL_EXISTS.md](docs/mit_level/ANSWER_MIT_PRD_LEVEL_EXISTS.md)
+- **📝 Documentation Summary:** [docs/mit_level/MIT_LEVEL_DOCUMENTATION_SUMMARY.md](docs/mit_level/MIT_LEVEL_DOCUMENTATION_SUMMARY.md)
 
 ### Other MIT-Level Docs
 - **🎓 Academic Paper:** [docs/ACADEMIC_PAPER.md](docs/ACADEMIC_PAPER.md)
@@ -370,7 +371,7 @@ OUTPUT: Cost model, quality impact, recommendation
 
 ---
 
-**🚀 START READING: [FINAL_MIT_LEVEL_PRD_SUMMARY.md](docs/mit_level/FINAL_MIT_LEVEL_PRD_SUMMARY.md)**
+**🚀 START READING: [FINAL_MIT_LEVEL_PRD_SUMMARY.md](FINAL_MIT_LEVEL_PRD_SUMMARY.md)**
 
 ---
 
