@@ -10,13 +10,13 @@ from pathlib import Path
 from unittest.mock import Mock, patch
 import tempfile
 
-from src.comparative_analysis import (
+from comparative_analysis import (
     ComparativeAnalyzer,
     ComparisonResult,
     CorrelationResult,
     RegressionResult
 )
-from src.errors import AnalysisError
+from errors import AnalysisError
 
 
 @pytest.fixture
