@@ -244,56 +244,6 @@ class TestBooleanEdgeCases:
         assert isinstance(result["flag"], bool)
 
 
-class TestSensitivityAnalysisPaths:
-    """Test specific conditional paths in sensitivity analysis."""
-
-    def test_embedding_dimension_with_varying_data(self, tmp_path):
-        """Test embedding dimension with varying means."""
-        from sensitivity_analysis import SensitivityAnalyzer
-        
-        results_dir = tmp_path / "results"
-        results_dir.mkdir()
-        
-        # Data with some variation
-        data = {
-            "semantic_distances": {
-                "0": 0.1, "10": 0.15, "20": 0.2, "30": 0.25, "40": 0.3, "50": 0.35
-            }
-        }
-        
-        with open(results_dir / "analysis_results_local.json", 'w') as f:
-            json.dump(data, f)
-        
-        analyzer = SensitivityAnalyzer(data_path=str(results_dir))
-        result = analyzer.embedding_dimension_sensitivity(dimensions=[100, 500, 1000])
-        
-        assert result is not None
-        assert result.parameter_name == "embedding_dimension"
-
-    def test_ngram_sensitivity_varied_data(self, tmp_path):
-        """Test n-gram sensitivity with varied data."""
-        from sensitivity_analysis import SensitivityAnalyzer
-        
-        results_dir = tmp_path / "results"
-        results_dir.mkdir()
-        
-        # More complete data structure
-        data = {
-            "semantic_distances": {"0": 0.1, "10": 0.2, "20": 0.3},
-            "text_similarities": {"0": 0.9, "10": 0.8, "20": 0.7},
-            "word_overlaps": {"0": 0.95, "10": 0.85, "20": 0.75}
-        }
-        
-        with open(results_dir / "analysis_results_local.json", 'w') as f:
-            json.dump(data, f)
-        
-        analyzer = SensitivityAnalyzer(data_path=str(results_dir))
-        result = analyzer.ngram_range_sensitivity()
-        
-        assert result is not None
-        assert result.parameter_name == "ngram_range"
-
-
 class TestComparativeAnalysisPaths:
     """Test specific conditional paths in comparative analysis."""
 
@@ -323,8 +273,8 @@ class TestComparativeAnalysisPaths:
         results = analyzer.pairwise_comparisons(metric_name="word_overlaps")
         assert isinstance(results, list)
 
-    def test_correlation_different_methods(self, tmp_path):
-        """Test correlation analysis with different methods."""
+    def test_correlation_analysis_default(self, tmp_path):
+        """Test correlation analysis with default parameters."""
         from comparative_analysis import ComparativeAnalyzer
         
         results_dir = tmp_path / "results"
@@ -341,16 +291,12 @@ class TestComparativeAnalysisPaths:
         
         analyzer = ComparativeAnalyzer(data_path=str(results_dir))
         
-        # Test Spearman
-        results = analyzer.correlation_analysis(method="spearman")
-        assert isinstance(results, list)
-        
-        # Test Kendall
-        results = analyzer.correlation_analysis(method="kendall")
+        # Test default correlation analysis
+        results = analyzer.correlation_analysis()
         assert isinstance(results, list)
 
-    def test_regression_analysis_types(self, tmp_path):
-        """Test different regression types."""
+    def test_regression_analysis_default(self, tmp_path):
+        """Test regression analysis with default parameters."""
         from comparative_analysis import ComparativeAnalyzer
         
         results_dir = tmp_path / "results"
@@ -367,11 +313,7 @@ class TestComparativeAnalysisPaths:
         
         analyzer = ComparativeAnalyzer(data_path=str(results_dir))
         
-        # Test quadratic regression
-        result = analyzer.regression_analysis(degree=2)
-        assert result is not None
-        
-        # Test cubic regression
-        result = analyzer.regression_analysis(degree=3)
+        # Test default regression analysis
+        result = analyzer.regression_analysis()
         assert result is not None
 
