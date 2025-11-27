@@ -27,11 +27,55 @@ from scipy.stats import f_oneway, chi2_contingency, spearmanr, kendalltau
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 import warnings
+import math
 
 from logger import get_logger
 from errors import AnalysisError
 
 logger = get_logger(__name__)
+
+
+class NumpyEncoder(json.JSONEncoder):
+    """Custom JSON encoder for numpy types."""
+    def default(self, obj):
+        if isinstance(obj, (np.integer, np.int64, np.int32, np.int16, np.int8)):
+            return int(obj)
+        elif isinstance(obj, (np.floating, np.float64, np.float32, np.float16)):
+            if math.isnan(obj) or math.isinf(obj):
+                return None
+            return float(obj)
+        elif isinstance(obj, (np.ndarray,)):
+            return obj.tolist()
+        elif isinstance(obj, (np.bool_, bool)):
+            return bool(obj)
+        return super().default(obj)
+
+
+def convert_numpy_types(obj):
+    """
+    Recursively convert numpy types to native Python types.
+    
+    Args:
+        obj: Object to convert (can be dict, list, numpy type, etc.)
+    
+    Returns:
+        Object with all numpy types converted to native Python types
+    """
+    if isinstance(obj, dict):
+        return {key: convert_numpy_types(value) for key, value in obj.items()}
+    elif isinstance(obj, list):
+        return [convert_numpy_types(item) for item in obj]
+    elif isinstance(obj, (np.integer, np.int64, np.int32, np.int16, np.int8)):
+        return int(obj)
+    elif isinstance(obj, (np.floating, np.float64, np.float32, np.float16)):
+        # Convert to float, preserving nan and inf
+        return float(obj)
+    elif isinstance(obj, (np.ndarray,)):
+        return [convert_numpy_types(item) for item in obj.tolist()]
+    elif isinstance(obj, (np.bool_, bool)):
+        return bool(obj)
+    else:
+        return obj
 
 
 @dataclass
@@ -197,6 +241,12 @@ class SensitivityAnalyzer:
         if len(means) >= 3:
             correlation, p_value = spearmanr(dimensions[:len(means)], means)
             
+            # Handle NaN values from constant data
+            if math.isnan(correlation):
+                correlation = 0.0
+            if math.isnan(p_value):
+                p_value = 1.0
+            
             # Effect size (coefficient of variation)
             effect_size = np.std(means) / np.mean(means) if np.mean(means) > 0 else 0
             
@@ -208,7 +258,7 @@ class SensitivityAnalyzer:
             else:
                 interp = "No significant sensitivity detected"
         else:
-            correlation, p_value, effect_size = 0, 1.0, 0
+            correlation, p_value, effect_size = 0.0, 1.0, 0.0
             interp = "Insufficient data for analysis"
         
         result = SensitivityResult(
@@ -593,7 +643,7 @@ class SensitivityAnalyzer:
         # 1. Embedding dimension sensitivity
         try:
             dim_sens = self.embedding_dimension_sensitivity()
-            report["parameter_sensitivity"]["embedding_dimension"] = asdict(dim_sens)
+            report["parameter_sensitivity"]["embedding_dimension"] = convert_numpy_types(asdict(dim_sens))
         except Exception as e:
             self.logger.error(f"Embedding dimension sensitivity failed: {e}")
             report["parameter_sensitivity"]["embedding_dimension"] = {"error": str(e)}
@@ -601,7 +651,7 @@ class SensitivityAnalyzer:
         # 2. N-gram range sensitivity
         try:
             ngram_sens = self.ngram_range_sensitivity()
-            report["parameter_sensitivity"]["ngram_range"] = asdict(ngram_sens)
+            report["parameter_sensitivity"]["ngram_range"] = convert_numpy_types(asdict(ngram_sens))
         except Exception as e:
             self.logger.error(f"N-gram sensitivity failed: {e}")
             report["parameter_sensitivity"]["ngram_range"] = {"error": str(e)}
@@ -609,7 +659,7 @@ class SensitivityAnalyzer:
         # 3. Bootstrap analysis
         try:
             bootstrap_result = self.bootstrap_analysis(n_iterations=10000)
-            report["bootstrap_analysis"]["cosine_distance"] = asdict(bootstrap_result)
+            report["bootstrap_analysis"]["cosine_distance"] = convert_numpy_types(asdict(bootstrap_result))
         except Exception as e:
             self.logger.error(f"Bootstrap analysis failed: {e}")
             report["bootstrap_analysis"]["cosine_distance"] = {"error": str(e)}
@@ -617,7 +667,7 @@ class SensitivityAnalyzer:
         # 4. ANOVA
         try:
             anova_result = self.anova_multi_factor()
-            report["anova_results"]["multi_factor"] = asdict(anova_result)
+            report["anova_results"]["multi_factor"] = convert_numpy_types(asdict(anova_result))
         except Exception as e:
             self.logger.error(f"ANOVA failed: {e}")
             report["anova_results"]["multi_factor"] = {"error": str(e)}
@@ -625,10 +675,13 @@ class SensitivityAnalyzer:
         # 5. Cohen's d effect sizes
         try:
             cohens_d = self.cohens_d_effect_size(0, 50)
-            report["effect_sizes"]["cohens_d_0_vs_50"] = cohens_d
+            report["effect_sizes"]["cohens_d_0_vs_50"] = convert_numpy_types(cohens_d)
         except Exception as e:
             self.logger.error(f"Cohen's d calculation failed: {e}")
             report["effect_sizes"]["cohens_d_0_vs_50"] = {"error": str(e)}
+        
+        # Convert all numpy types to native Python types for consistency
+        report = convert_numpy_types(report)
         
         # Save report
         output_path = Path(output_file)
@@ -636,7 +689,7 @@ class SensitivityAnalyzer:
         
         try:
             with open(output_path, 'w') as f:
-                json.dump(report, f, indent=2)
+                json.dump(report, f, indent=2, allow_nan=True)
             self.logger.info(f"Sensitivity analysis report saved to: {output_path}")
             print(f"\n✓ Sensitivity analysis report saved to: {output_path}")
         except Exception as e:

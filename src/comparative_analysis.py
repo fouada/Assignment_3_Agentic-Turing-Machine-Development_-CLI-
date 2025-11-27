@@ -43,6 +43,49 @@ from errors import AnalysisError
 logger = get_logger(__name__)
 
 
+class NumpyEncoder(json.JSONEncoder):
+    """Custom JSON encoder for numpy types."""
+    def default(self, obj):
+        if isinstance(obj, (np.integer, np.int64, np.int32, np.int16, np.int8)):
+            return int(obj)
+        elif isinstance(obj, (np.floating, np.float64, np.float32, np.float16)):
+            return float(obj)
+        elif isinstance(obj, (np.ndarray,)):
+            return obj.tolist()
+        elif isinstance(obj, (np.bool_, bool)):
+            return bool(obj)
+        elif isinstance(obj, np.nan.__class__):
+            return None
+        return super().default(obj)
+
+
+def convert_numpy_types(obj):
+    """
+    Recursively convert numpy types to native Python types.
+    
+    Args:
+        obj: Object to convert (can be dict, list, numpy type, etc.)
+    
+    Returns:
+        Object with all numpy types converted to native Python types
+    """
+    if isinstance(obj, dict):
+        return {key: convert_numpy_types(value) for key, value in obj.items()}
+    elif isinstance(obj, list):
+        return [convert_numpy_types(item) for item in obj]
+    elif isinstance(obj, (np.integer, np.int64, np.int32, np.int16, np.int8)):
+        return int(obj)
+    elif isinstance(obj, (np.floating, np.float64, np.float32, np.float16)):
+        # Convert to float, preserving nan and inf
+        return float(obj)
+    elif isinstance(obj, (np.ndarray,)):
+        return [convert_numpy_types(item) for item in obj.tolist()]
+    elif isinstance(obj, (np.bool_, bool)):
+        return bool(obj)
+    else:
+        return obj
+
+
 @dataclass
 class ComparisonResult:
     """Container for pairwise comparison results."""
@@ -632,7 +675,7 @@ class ComparativeAnalyzer:
             # Normality test (Shapiro-Wilk)
             try:
                 stat_sw, p_sw = shapiro(values)
-                normal = p_sw > 0.05
+                normal = bool(p_sw > 0.05)
                 
                 diagnostics[f"{metric_name}_normality"] = {
                     "test": "Shapiro-Wilk",
@@ -659,11 +702,11 @@ class ComparativeAnalyzer:
             
             # Levene's test (robust to non-normality)
             stat_levene, p_levene = levene(*groups)
-            homoscedastic_levene = p_levene > 0.05
+            homoscedastic_levene = bool(p_levene > 0.05)
             
             # Bartlett's test (sensitive to non-normality)
             stat_bartlett, p_bartlett = bartlett(*groups)
-            homoscedastic_bartlett = p_bartlett > 0.05
+            homoscedastic_bartlett = bool(p_bartlett > 0.05)
             
             diagnostics["homoscedasticity"] = {
                 "levene_test": {
@@ -757,13 +800,16 @@ class ComparativeAnalyzer:
             self.logger.error(f"Diagnostic tests failed: {e}")
             report["diagnostic_tests"]["error"] = str(e)
         
+        # Convert all numpy types to native Python types for consistency
+        report = convert_numpy_types(report)
+        
         # Save report
         output_path = Path(output_file)
         output_path.parent.mkdir(parents=True, exist_ok=True)
         
         try:
             with open(output_path, 'w') as f:
-                json.dump(report, f, indent=2)
+                json.dump(report, f, indent=2, allow_nan=True)
             self.logger.info(f"Comparative analysis report saved to: {output_path}")
             print(f"\n✓ Comparative analysis report saved to: {output_path}")
         except Exception as e:
