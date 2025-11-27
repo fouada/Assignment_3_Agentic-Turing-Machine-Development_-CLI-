@@ -51,8 +51,13 @@ notebook = [
     "notebook>=7.0.0",
     "ipykernel>=6.25.0",
 ]
+dashboard = [
+    "streamlit>=1.28.0",
+    "plotly>=5.18.0",
+    "pandas>=2.0.0",
+]
 all = [
-    "agentic-turing-machine[dev,notebook]",
+    "agentic-turing-machine[dev,notebook,dashboard]",
 ]
 
 [project.scripts]
@@ -88,6 +93,7 @@ branch = true
 omit = [
     "tests/*",
     "*/__pycache__/*",
+    "src/dashboard.py",  # Streamlit UI code - tested via manual/E2E testing
 ]
 
 [tool.coverage.report]
