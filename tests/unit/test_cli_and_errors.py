@@ -11,6 +11,131 @@ from unittest.mock import patch, MagicMock
 import numpy as np
 
 from errors import AnalysisError
+from comparative_analysis import main as comparative_main
+from sensitivity_analysis import main as sensitivity_main
+
+
+class TestMainFunctions:
+    """Test the main() entry point functions."""
+
+    def test_comparative_main_runs(self, tmp_path, capsys):
+        """Test that comparative_analysis.main() runs without errors."""
+        # Create test data
+        results_dir = tmp_path / "results"
+        results_dir.mkdir()
+        
+        data = {
+            "semantic_distances": {"0": 0.1, "10": 0.2, "20": 0.3, "30": 0.4},
+            "text_similarities": {"0": 0.9, "10": 0.8, "20": 0.7, "30": 0.6},
+            "word_overlaps": {"0": 0.95, "10": 0.85, "20": 0.75, "30": 0.65}
+        }
+        
+        with open(results_dir / "analysis_results_local.json", 'w') as f:
+            json.dump(data, f)
+        
+        # Patch the default path
+        with patch('comparative_analysis.ComparativeAnalyzer') as MockAnalyzer:
+            mock_instance = MockAnalyzer.return_value
+            mock_instance.generate_comparative_report.return_value = {
+                "correlation_analysis": {
+                    "results": [
+                        {
+                            "variable1": "semantic_distances",
+                            "variable2": "text_similarities",
+                            "test_name": "Pearson",
+                            "correlation_coefficient": 0.95,
+                            "p_value": 0.001,
+                            "interpretation": "Strong correlation"
+                        }
+                    ]
+                },
+                "regression_analysis": {
+                    "linear": {
+                        "r_squared": 0.9,
+                        "rmse": 0.01,
+                        "interpretation": "Good fit"
+                    }
+                },
+                "diagnostic_tests": {
+                    "semantic_distances_normality": {
+                        "normal": True,
+                        "recommendation": "Use parametric tests"
+                    }
+                }
+            }
+            
+            comparative_main()
+            
+            # Verify output was printed
+            captured = capsys.readouterr()
+            assert "COMPARATIVE ANALYSIS" in captured.out
+
+    def test_sensitivity_main_runs(self, tmp_path, capsys):
+        """Test that sensitivity_analysis.main() runs without errors."""
+        with patch('sensitivity_analysis.SensitivityAnalyzer') as MockAnalyzer:
+            mock_instance = MockAnalyzer.return_value
+            mock_instance.generate_sensitivity_report.return_value = {
+                "parameter_sensitivity": {
+                    "embedding_dimension": {
+                        "correlation": 0.5,
+                        "p_value": 0.05,
+                        "interpretation": "Moderate sensitivity"
+                    }
+                },
+                "bootstrap_analysis": {
+                    "cosine_distance": {
+                        "observed_value": 0.3,
+                        "bootstrap_mean": 0.3,
+                        "ci_lower": 0.25,
+                        "ci_upper": 0.35,
+                        "bias": 0.001
+                    }
+                },
+                "anova_results": {
+                    "multi_factor": {
+                        "f_statistic": 2.5,
+                        "p_value": 0.1,
+                        "df_between": 3,
+                        "df_within": 20,
+                        "effect_size_eta_squared": 0.1,
+                        "interpretation": "Small effect"
+                    }
+                }
+            }
+            
+            sensitivity_main()
+            
+            # Verify output was printed
+            captured = capsys.readouterr()
+            assert "SENSITIVITY ANALYSIS" in captured.out
+
+    def test_comparative_main_missing_keys(self, capsys):
+        """Test main() handles missing report keys gracefully."""
+        with patch('comparative_analysis.ComparativeAnalyzer') as MockAnalyzer:
+            mock_instance = MockAnalyzer.return_value
+            # Return minimal report
+            mock_instance.generate_comparative_report.return_value = {}
+            
+            comparative_main()
+            
+            captured = capsys.readouterr()
+            assert "COMPARATIVE ANALYSIS COMPLETE" in captured.out
+
+    def test_sensitivity_main_partial_report(self, capsys):
+        """Test main() handles partial report gracefully."""
+        with patch('sensitivity_analysis.SensitivityAnalyzer') as MockAnalyzer:
+            mock_instance = MockAnalyzer.return_value
+            # Return partial report
+            mock_instance.generate_sensitivity_report.return_value = {
+                "parameter_sensitivity": {},
+                "bootstrap_analysis": {},
+                "anova_results": {}
+            }
+            
+            sensitivity_main()
+            
+            captured = capsys.readouterr()
+            assert "SENSITIVITY ANALYSIS COMPLETE" in captured.out
 
 
 class TestComparativeAnalyzerCLI:
