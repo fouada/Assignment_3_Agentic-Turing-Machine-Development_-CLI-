@@ -1,0 +1,246 @@
+{
+  "metadata": {
+    "analysis_type": "Information-Theoretic Analysis",
+    "innovation_level": "MIT Graduate Research",
+    "date": "2025-11-27",
+    "key_contributions": [
+      "Shannon Entropy preservation tracking",
+      "Mutual Information for translation quality",
+      "KL Divergence for distributional shift",
+      "Information Bottleneck theory application",
+      "Transfer Entropy for causal flow"
+    ]
+  },
+  "entropy_analysis": {
+    "original": {
+      "text_name": "text_word",
+      "shannon_entropy": 4.087462838797758,
+      "char_entropy": 4.071785643615566,
+      "word_entropy": 4.087462838797758,
+      "normalized_entropy": 0.9999999993999746,
+      "redundancy": 6.000253627291841e-10,
+      "interpretation": "High entropy: rich, diverse content with low redundancy"
+    },
+    "noise_0": {
+      "text_name": "text_word",
+      "shannon_entropy": 4.087462838797758,
+      "char_entropy": 4.067870285076435,
+      "word_entropy": 4.087462838797758,
+      "normalized_entropy": 0.9999999993999746,
+      "redundancy": 6.000253627291841e-10,
+      "interpretation": "High entropy: rich, diverse content with low redundancy"
+    },
+    "noise_10": {
+      "text_name": "text_word",
+      "shannon_entropy": 4.087462838797758,
+      "char_entropy": 4.067870285076435,
+      "word_entropy": 4.087462838797758,
+      "normalized_entropy": 0.9999999993999746,
+      "redundancy": 6.000253627291841e-10,
+      "interpretation": "High entropy: rich, diverse content with low redundancy"
+    },
+    "noise_20": {
+      "text_name": "text_word",
+      "shannon_entropy": 4.087462838797758,
+      "char_entropy": 4.067870285076435,
+      "word_entropy": 4.087462838797758,
+      "normalized_entropy": 0.9999999993999746,
+      "redundancy": 6.000253627291841e-10,
+      "interpretation": "High entropy: rich, diverse content with low redundancy"
+    },
+    "noise_25": {
+      "text_name": "text_word",
+      "shannon_entropy": 4.087462838797758,
+      "char_entropy": 4.067870285076435,
+      "word_entropy": 4.087462838797758,
+      "normalized_entropy": 0.9999999993999746,
+      "redundancy": 6.000253627291841e-10,
+      "interpretation": "High entropy: rich, diverse content with low redundancy"
+    },
+    "noise_30": {
+      "text_name": "text_word",
+      "shannon_entropy": 4.087462838797758,
+      "char_entropy": 4.067870285076435,
+      "word_entropy": 4.087462838797758,
+      "normalized_entropy": 0.9999999993999746,
+      "redundancy": 6.000253627291841e-10,
+      "interpretation": "High entropy: rich, diverse content with low redundancy"
+    },
+    "noise_40": {
+      "text_name": "text_word",
+      "shannon_entropy": 4.087462838797758,
+      "char_entropy": 4.067870285076435,
+      "word_entropy": 4.087462838797758,
+      "normalized_entropy": 0.9999999993999746,
+      "redundancy": 6.000253627291841e-10,
+      "interpretation": "High entropy: rich, diverse content with low redundancy"
+    },
+    "noise_50": {
+      "text_name": "text_word",
+      "shannon_entropy": 4.087462838797758,
+      "char_entropy": 4.067870285076435,
+      "word_entropy": 4.087462838797758,
+      "normalized_entropy": 0.9999999993999746,
+      "redundancy": 6.000253627291841e-10,
+      "interpretation": "High entropy: rich, diverse content with low redundancy"
+    }
+  },
+  "mutual_information": {
+    "noise_0": {
+      "text1_name": "original",
+      "text2_name": "noise_0",
+      "mutual_information": 3.6333003062864595,
+      "normalized_mi": 0.888888888888889,
+      "entropy_text1": 4.087462844572267,
+      "entropy_text2": 4.087462844572267,
+      "joint_entropy": 4.541625382858074,
+      "information_loss": 0.4541625382858072,
+      "interpretation": "Excellent preservation: most original information retained"
+    },
+    "noise_10": {
+      "text1_name": "original",
+      "text2_name": "noise_10",
+      "mutual_information": 3.6333003062864595,
+      "normalized_mi": 0.888888888888889,
+      "entropy_text1": 4.087462844572267,
+      "entropy_text2": 4.087462844572267,
+      "joint_entropy": 4.541625382858074,
+      "information_loss": 0.4541625382858072,
+      "interpretation": "Excellent preservation: most original information retained"
+    },
+    "noise_20": {
+      "text1_name": "original",
+      "text2_name": "noise_20",
+      "mutual_information": 3.6333003062864595,
+      "normalized_mi": 0.888888888888889,
+      "entropy_text1": 4.087462844572267,
+      "entropy_text2": 4.087462844572267,
+      "joint_entropy": 4.541625382858074,
+      "information_loss": 0.4541625382858072,
+      "interpretation": "Excellent preservation: most original information retained"
+    },
+    "noise_25": {
+      "text1_name": "original",
+      "text2_name": "noise_25",
+      "mutual_information": 3.6333003062864595,
+      "normalized_mi": 0.888888888888889,
+      "entropy_text1": 4.087462844572267,
+      "entropy_text2": 4.087462844572267,
+      "joint_entropy": 4.541625382858074,
+      "information_loss": 0.4541625382858072,
+      "interpretation": "Excellent preservation: most original information retained"
+    },
+    "noise_30": {
+      "text1_name": "original",
+      "text2_name": "noise_30",
+      "mutual_information": 3.6333003062864595,
+      "normalized_mi": 0.888888888888889,
+      "entropy_text1": 4.087462844572267,
+      "entropy_text2": 4.087462844572267,
+      "joint_entropy": 4.541625382858074,
+      "information_loss": 0.4541625382858072,
+      "interpretation": "Excellent preservation: most original information retained"
+    },
+    "noise_40": {
+      "text1_name": "original",
+      "text2_name": "noise_40",
+      "mutual_information": 3.6333003062864595,
+      "normalized_mi": 0.888888888888889,
+      "entropy_text1": 4.087462844572267,
+      "entropy_text2": 4.087462844572267,
+      "joint_entropy": 4.541625382858074,
+      "information_loss": 0.4541625382858072,
+      "interpretation": "Excellent preservation: most original information retained"
+    },
+    "noise_50": {
+      "text1_name": "original",
+      "text2_name": "noise_50",
+      "mutual_information": 3.6333003062864595,
+      "normalized_mi": 0.888888888888889,
+      "entropy_text1": 4.087462844572267,
+      "entropy_text2": 4.087462844572267,
+      "joint_entropy": 4.541625382858074,
+      "information_loss": 0.4541625382858072,
+      "interpretation": "Excellent preservation: most original information retained"
+    }
+  },
+  "kl_divergence": {
+    "noise_0": {
+      "source_name": "original",
+      "target_name": "noise_0",
+      "kl_divergence": 0.2686333246124133,
+      "reverse_kl": 0.2686333246124133,
+      "jensen_shannon": 0.03788181470493945,
+      "total_variation": 0.05820721769499418,
+      "interpretation": "Minimal divergence: distributions nearly identical"
+    },
+    "noise_10": {
+      "source_name": "original",
+      "target_name": "noise_10",
+      "kl_divergence": 0.2686333246124133,
+      "reverse_kl": 0.2686333246124133,
+      "jensen_shannon": 0.03788181470493945,
+      "total_variation": 0.05820721769499418,
+      "interpretation": "Minimal divergence: distributions nearly identical"
+    },
+    "noise_20": {
+      "source_name": "original",
+      "target_name": "noise_20",
+      "kl_divergence": 0.2686333246124133,
+      "reverse_kl": 0.2686333246124133,
+      "jensen_shannon": 0.03788181470493945,
+      "total_variation": 0.05820721769499418,
+      "interpretation": "Minimal divergence: distributions nearly identical"
+    },
+    "noise_25": {
+      "source_name": "original",
+      "target_name": "noise_25",
+      "kl_divergence": 0.2686333246124133,
+      "reverse_kl": 0.2686333246124133,
+      "jensen_shannon": 0.03788181470493945,
+      "total_variation": 0.05820721769499418,
+      "interpretation": "Minimal divergence: distributions nearly identical"
+    },
+    "noise_30": {
+      "source_name": "original",
+      "target_name": "noise_30",
+      "kl_divergence": 0.2686333246124133,
+      "reverse_kl": 0.2686333246124133,
+      "jensen_shannon": 0.03788181470493945,
+      "total_variation": 0.05820721769499418,
+      "interpretation": "Minimal divergence: distributions nearly identical"
+    },
+    "noise_40": {
+      "source_name": "original",
+      "target_name": "noise_40",
+      "kl_divergence": 0.2686333246124133,
+      "reverse_kl": 0.2686333246124133,
+      "jensen_shannon": 0.03788181470493945,
+      "total_variation": 0.05820721769499418,
+      "interpretation": "Minimal divergence: distributions nearly identical"
+    },
+    "noise_50": {
+      "source_name": "original",
+      "target_name": "noise_50",
+      "kl_divergence": 0.2686333246124133,
+      "reverse_kl": 0.2686333246124133,
+      "jensen_shannon": 0.03788181470493945,
+      "total_variation": 0.05820721769499418,
+      "interpretation": "Minimal divergence: distributions nearly identical"
+    }
+  },
+  "summary": {
+    "mean_normalized_mi": 0.8888888888888891,
+    "std_normalized_mi": 1.1102230246251565e-16,
+    "mean_jensen_shannon": 0.03788181470493945,
+    "std_jensen_shannon": 0.0,
+    "correlation_noise_mi": 0.0
+  },
+  "information_bottleneck": {
+    "compression_rate": 0.11111110985534511,
+    "relevance_preserved": 0.8888888901446549,
+    "bottleneck_quality": 0.8395061745836256,
+    "optimal_beta": 8.000000101717047,
+    "interpretation": "Excellent bottleneck: optimal compression with high relevance"
+  }
+}

@@ -422,11 +422,16 @@ def analyze_semantic_drift() -> None:
             "api_provider": "NONE - All local computation"
         }
 
+        # Ensure results directory exists
+        results_dir = Path(__file__).parent.parent / "results"
+        results_dir.mkdir(parents=True, exist_ok=True)
+        
         try:
-            with open("analysis_results_local.json", 'w', encoding='utf-8') as f:
+            results_file = results_dir / "analysis_results_local.json"
+            with open(results_file, 'w', encoding='utf-8') as f:
                 json.dump(results, f, indent=2, ensure_ascii=False)
-            print("Results saved to: analysis_results_local.json")
-            logger.info("Results saved to: analysis_results_local.json")
+            print(f"Results saved to: {results_file}")
+            logger.info(f"Results saved to: {results_file}")
         except IOError as e:
             logger.error(f"Failed to save results: {e}")
             raise FileOperationError(
@@ -582,13 +587,18 @@ def generate_graph(
 
         plt.tight_layout()
 
-        # Save figure
-        plt.savefig('semantic_drift_analysis_local.png', dpi=300, bbox_inches='tight')
-        print("Graph saved to: semantic_drift_analysis_local.png")
+        # Save figure to results directory
+        results_dir = Path(__file__).parent.parent / "results"
+        results_dir.mkdir(parents=True, exist_ok=True)
+        
+        png_path = results_dir / "semantic_drift_analysis_local.png"
+        plt.savefig(png_path, dpi=300, bbox_inches='tight')
+        print(f"Graph saved to: {png_path}")
         logger.info("Saved PNG visualization")
 
-        plt.savefig('semantic_drift_analysis_local.pdf', bbox_inches='tight')
-        print("Graph saved to: semantic_drift_analysis_local.pdf")
+        pdf_path = results_dir / "semantic_drift_analysis_local.pdf"
+        plt.savefig(pdf_path, bbox_inches='tight')
+        print(f"Graph saved to: {pdf_path}")
         logger.info("Saved PDF visualization")
 
         plt.close()

@@ -1,0 +1,37 @@
+{
+  "title": "MIT-Level Research Analysis Summary",
+  "date": "2025-11-28 01:32:55",
+  "analyses_completed": [
+    "standard_semantic_drift",
+    "systematic_sensitivity",
+    "data_driven_comparative"
+  ],
+  "standard_analysis": {
+    "embedding_method": "TF-IDF (local, no API)",
+    "distance_metric": "cosine_distance",
+    "noise_levels": [
+      "0",
+      "10",
+      "20",
+      "25",
+      "30",
+      "40",
+      "50"
+    ]
+  },
+  "sensitivity_analysis": {
+    "n_bootstrap_iterations": 10000,
+    "parameters_tested": [
+      "embedding_dimension",
+      "ngram_range"
+    ]
+  },
+  "comparative_analysis": {
+    "correction_method": "holm",
+    "tests_performed": [
+      "pairwise_comparisons",
+      "correlation_analysis",
+      "regression_analysis"
+    ]
+  }
+}

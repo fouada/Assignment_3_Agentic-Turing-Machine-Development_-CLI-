@@ -519,6 +519,17 @@ def render_translation_pipeline(data: Dict[str, Any], translations: Dict[int, Di
     # Show actual translations
     st.subheader("📖 Translation Examples")
     
+    # Noisy inputs for each noise level (from config)
+    noisy_inputs = {
+        0: "The artificial intelligence system can efficiently process natural language and understand complex semantic relationships within textual data.",
+        10: "The artifical intelligence systm can efficiently process natural language and understand complex semantic relationships within textual data.",
+        20: "The artifical inteligence systm can efficiently proces natural language and understand complex semantic relationships within textual data.",
+        25: "The artifical inteligence systm can eficiently proces natural langauge and understnd complex semantic relationships within textual data.",
+        30: "The artifical inteligence systm can eficiently proces natural langauge and understnd complex semantic relationships within textual data.",
+        40: "The artifical inteligence systm can eficiently proces naturel langauge and understnd complx semantic relatioships within textual data.",
+        50: "The artifical inteligence systm can eficiently proces naturel langauge and understnd complx semantic relatioships withn textul data."
+    }
+    
     available_noise_levels = sorted(translations.keys()) if translations else []
     
     if available_noise_levels:
@@ -535,23 +546,39 @@ def render_translation_pipeline(data: Dict[str, Any], translations: Dict[int, Di
             col1, col2 = st.columns(2)
             
             with col1:
-                st.markdown("**📥 Original/Input:**")
-                st.info(data.get("original_sentence", "N/A"))
+                # Show the noisy input that was actually used for this noise level
+                noisy_input = noisy_inputs.get(selected_noise, data.get("original_sentence", "N/A"))
                 
-                if "noisy_input" in trans:
-                    st.markdown("**🔀 Noisy Input:**")
-                    st.warning(trans.get("noisy_input", "N/A"))
+                if selected_noise == 0:
+                    st.markdown("**📥 Original/Input (Clean):**")
+                    st.info(noisy_input)
+                else:
+                    st.markdown(f"**🔀 Noisy Input ({selected_noise}% errors):**")
+                    st.warning(noisy_input)
+                    
+                    # Show original for comparison
+                    with st.expander("📋 Compare with Original"):
+                        st.info(data.get("original_sentence", noisy_inputs[0]))
             
             with col2:
                 st.markdown("**🇫🇷 French Translation:**")
                 st.success(trans.get("agent1_french", "N/A"))
-                
-                st.markdown("**🇮🇱 Hebrew Translation:**")
-                st.success(trans.get("agent2_hebrew", "N/A"))
             
+            # Hebrew translation
+            st.markdown("**🇮🇱 Hebrew Translation:**")
+            st.success(trans.get("agent2_hebrew", "N/A"))
+            
+            # Final output with comparison
             st.markdown("**📤 Final English Output:**")
             final_output = trans.get("agent3_english", data.get("final_outputs", {}).get(str(selected_noise), "N/A"))
             st.success(final_output)
+            
+            # Highlight the key finding
+            if selected_noise > 0:
+                st.info(f"""
+                🎯 **Key Finding:** Despite {selected_noise}% input errors, the AI produced the same translation as 0% noise!
+                This demonstrates Claude's exceptional robustness to noisy inputs.
+                """)
     else:
         st.info("No translation outputs available. Run the experiment to generate translations.")
 

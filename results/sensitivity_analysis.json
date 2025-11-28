@@ -1,0 +1,134 @@
+{
+  "metadata": {
+    "analysis_type": "Systematic Sensitivity Analysis",
+    "date": "2025-11-27",
+    "n_bootstrap_iterations": 10000,
+    "confidence_level": 0.95
+  },
+  "parameter_sensitivity": {
+    "embedding_dimension": {
+      "parameter_name": "embedding_dimension",
+      "parameter_values": [
+        100,
+        250,
+        500,
+        1000,
+        2000,
+        5000
+      ],
+      "metric_means": [
+        0.18678677306162003,
+        0.18678677306162003,
+        0.18678677306162003,
+        0.18678677306162003,
+        0.18678677306162003,
+        0.18678677306162003
+      ],
+      "metric_stds": [
+        2.997944808332385e-17,
+        2.997944808332385e-17,
+        2.997944808332385e-17,
+        2.997944808332385e-17,
+        2.997944808332385e-17,
+        2.997944808332385e-17
+      ],
+      "metric_ci_lower": [
+        0.18678677306162,
+        0.18678677306162,
+        0.18678677306162,
+        0.18678677306162,
+        0.18678677306162,
+        0.18678677306162
+      ],
+      "metric_ci_upper": [
+        0.18678677306162006,
+        0.18678677306162006,
+        0.18678677306162006,
+        0.18678677306162006,
+        0.18678677306162006,
+        0.18678677306162006
+      ],
+      "correlation": 0.0,
+      "p_value": 1.0,
+      "effect_size": 0.0,
+      "interpretation": "No significant sensitivity detected"
+    },
+    "ngram_range": {
+      "parameter_name": "ngram_range",
+      "parameter_values": [
+        "1,1",
+        "1,2",
+        "1,3",
+        "1,4",
+        "2,3",
+        "2,4"
+      ],
+      "metric_means": [
+        0.10989127496593343,
+        0.16495009424790186,
+        0.18678677306162003,
+        0.2008987731608296,
+        0.22639048366277903,
+        0.23306840728626854
+      ],
+      "metric_stds": [
+        0.0,
+        0.0,
+        2.997944808332385e-17,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "metric_ci_lower": [
+        NaN,
+        NaN,
+        0.18678677306162,
+        NaN,
+        NaN,
+        NaN
+      ],
+      "metric_ci_upper": [
+        NaN,
+        NaN,
+        0.18678677306162006,
+        NaN,
+        NaN,
+        NaN
+      ],
+      "correlation": 0.0,
+      "p_value": 0.0,
+      "effect_size": 0.22155805904971707,
+      "interpretation": "Significant variation across n-gram ranges"
+    }
+  },
+  "bootstrap_analysis": {
+    "cosine_distance": {
+      "metric_name": "cosine_distance",
+      "observed_value": 0.28938997901130925,
+      "bootstrap_mean": 0.28938997901130925,
+      "bootstrap_std": 0.0,
+      "ci_lower": 0.28938997901130925,
+      "ci_upper": 0.28938997901130925,
+      "bias": 0.0,
+      "n_iterations": 10000
+    }
+  },
+  "anova_results": {
+    "multi_factor": {
+      "test_name": "One-Way ANOVA (Noise Level Effect)",
+      "f_statistic": -1.1446536544027838e-47,
+      "p_value": NaN,
+      "df_between": 6,
+      "df_within": 14,
+      "effect_size_eta_squared": 5.799444492866237e-32,
+      "interpretation": "No significant differences detected - Small effect size (\u03b7\u00b2 < 0.06)"
+    }
+  },
+  "effect_sizes": {
+    "cohens_d_0_vs_50": {
+      "semantic_distances": 0.0,
+      "text_similarities": 0.0,
+      "word_overlaps": 0.0
+    }
+  }
+}

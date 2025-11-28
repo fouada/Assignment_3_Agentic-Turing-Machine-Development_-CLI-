@@ -1,0 +1,119 @@
+{
+  "metadata": {
+    "analysis_type": "Adversarial Robustness Testing",
+    "innovation_level": "MIT Graduate Research - Security Analysis",
+    "date": "2025-11-27",
+    "attack_types_tested": [
+      "homoglyph",
+      "invisible_injection",
+      "typosquatting",
+      "synonym_substitution",
+      "word_permutation",
+      "punctuation_manipulation"
+    ],
+    "key_innovation": "First systematic adversarial robustness analysis for multi-agent LLM translation systems"
+  },
+  "adversarial_examples": [
+    {
+      "attack_type": "homoglyph",
+      "original": "The artificial intelligence system can efficiently process natural language and understand complex s...",
+      "adversarial": "t\u1e23e artif\u0456ci\u0251l intelligence syst\u0117m can effic\u2170ently process \u043fatural lan\u0261ua9e and understand complex s...",
+      "perturbation_strength": 0.1,
+      "changes_count": 10
+    },
+    {
+      "attack_type": "homoglyph",
+      "original": "The artificial intelligence system can efficiently process natural language and understand complex s...",
+      "adversarial": "the @r+ificial inte\u217clig3\u043fce \u0455ystem can e\u0192fic\u04563ntl\u03b3 \u0440rocess \u043fatu\u0155al l\u0430nguage and \u057dn\u0501e\u0155st4\u043f\u0501 co\u043cp\u217cex s...",
+      "perturbation_strength": 0.2,
+      "changes_count": 28
+    },
+    {
+      "attack_type": "invisible_injection",
+      "original": "The artificial intelligence system can efficiently process natural language and understand complex s...",
+      "adversarial": "The artificial intelli\ufeffgence system can effi\u200dciently process natur\u200cal language an\u200dd understa\u200cnd comp...",
+      "perturbation_strength": 0.05,
+      "changes_count": 10
+    },
+    {
+      "attack_type": "typosquatting",
+      "original": "The artificial intelligence system can efficiently process natural language and understand complex s...",
+      "adversarial": "The artificial intelligence system can efficiently process natural language and understand complex s...",
+      "perturbation_strength": 0.1,
+      "changes_count": 0
+    },
+    {
+      "attack_type": "synonym_substitution",
+      "original": "The artificial intelligence system can efficiently process natural language and understand complex s...",
+      "adversarial": "The artificial intelligence system can efficiently process natural language and understand complex s...",
+      "perturbation_strength": 0.2,
+      "changes_count": 0
+    },
+    {
+      "attack_type": "synonym_substitution",
+      "original": "The artificial intelligence system can efficiently process natural language and understand complex s...",
+      "adversarial": "The artificial intelligence system can efficiently process natural dialect and comprehend intricate ...",
+      "perturbation_strength": 0.4,
+      "changes_count": 4
+    },
+    {
+      "attack_type": "word_permutation",
+      "original": "The artificial intelligence system can efficiently process natural language and understand complex s...",
+      "adversarial": "The artificial system intelligence can efficiently process natural language understand and complex s...",
+      "perturbation_strength": 0.11764705882352941,
+      "changes_count": 2
+    },
+    {
+      "attack_type": "punctuation_manipulation",
+      "original": "The artificial intelligence system can efficiently process natural language and understand complex s...",
+      "adversarial": "The artificial intelligence system can efficiently process natural language and understand complex s...",
+      "perturbation_strength": 0.0,
+      "changes_count": 0
+    }
+  ],
+  "robustness_score": {
+    "overall_score": 72.77688840028175,
+    "character_robustness": 44.543220042825894,
+    "word_robustness": 87.39900095787847,
+    "structural_robustness": 99.99999999999997,
+    "certified_radius": 0.17352941176470588,
+    "vulnerability_count": 4,
+    "robustness_grade": "C",
+    "recommendations": [
+      "Add Unicode normalization preprocessing",
+      "Consider adversarial training"
+    ]
+  },
+  "attack_analysis": {
+    "word_permutation": {
+      "count": 1,
+      "average_effectiveness": 2.220446049250313e-16,
+      "robustness": 99.99999999999997
+    },
+    "punctuation_manipulation": {
+      "count": 1,
+      "average_effectiveness": 2.220446049250313e-16,
+      "robustness": 99.99999999999997
+    },
+    "invisible_injection": {
+      "count": 1,
+      "average_effectiveness": 0.7496262862868375,
+      "robustness": 25.037371371316254
+    },
+    "synonym_substitution": {
+      "count": 2,
+      "average_effectiveness": 0.18901498563182284,
+      "robustness": 81.09850143681771
+    },
+    "typosquatting": {
+      "count": 1,
+      "average_effectiveness": 2.220446049250313e-16,
+      "robustness": 99.99999999999997
+    },
+    "homoglyph": {
+      "count": 2,
+      "average_effectiveness": 0.7343224560000632,
+      "robustness": 26.56775439999368
+    }
+  }
+}

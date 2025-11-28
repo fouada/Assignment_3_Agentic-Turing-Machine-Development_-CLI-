@@ -1,0 +1,553 @@
+{
+  "metadata": {
+    "analysis_type": "Data-Driven Comparative Analysis",
+    "date": "2025-11-27",
+    "correction_method": "holm",
+    "significance_level": 0.05
+  },
+  "pairwise_comparisons": {
+    "semantic_distance": [
+      {
+        "group1_name": "0% noise",
+        "group2_name": "10% noise",
+        "group1_mean": 0.2893841130704173,
+        "group2_mean": 0.28705097896340664,
+        "group1_std": 0.015937334079155232,
+        "group2_std": 0.011833333988221707,
+        "test_statistic": 498.0,
+        "p_value": 0.4825169043645008,
+        "p_value_corrected": 1.0,
+        "effect_size": 0.10666666666666667,
+        "test_name": "Mann-Whitney U",
+        "significant": false,
+        "interpretation": "No significant difference (p=1.0000)"
+      },
+      {
+        "group1_name": "0% noise",
+        "group2_name": "20% noise",
+        "group1_mean": 0.29196030995049715,
+        "group2_mean": 0.28553610798081064,
+        "group1_std": 0.01170039108727898,
+        "group2_std": 0.012080788326741171,
+        "test_statistic": 584.0,
+        "p_value": 0.04841349946481363,
+        "p_value_corrected": 1.0,
+        "effect_size": 0.29777777777777775,
+        "test_name": "Mann-Whitney U",
+        "significant": false,
+        "interpretation": "No significant difference (p=1.0000)"
+      },
+      {
+        "group1_name": "0% noise",
+        "group2_name": "25% noise",
+        "group1_mean": 0.2925516525495143,
+        "group2_mean": 0.28960680208744277,
+        "group1_std": 0.01185015848953006,
+        "group2_std": 0.0155824302048271,
+        "test_statistic": 507.0,
+        "p_value": 0.40353753915408597,
+        "p_value_corrected": 1.0,
+        "effect_size": 0.12666666666666668,
+        "test_name": "Mann-Whitney U",
+        "significant": false,
+        "interpretation": "No significant difference (p=1.0000)"
+      },
+      {
+        "group1_name": "0% noise",
+        "group2_name": "30% noise",
+        "group1_mean": 0.2908599333493605,
+        "group2_mean": 0.2869012790302456,
+        "group1_std": 0.012018859308939938,
+        "group2_std": 0.0148462017852559,
+        "test_statistic": 524.0,
+        "p_value": 0.27718918977304785,
+        "p_value_corrected": 1.0,
+        "effect_size": 0.16444444444444445,
+        "test_name": "Mann-Whitney U",
+        "significant": false,
+        "interpretation": "No significant difference (p=1.0000)"
+      },
+      {
+        "group1_name": "0% noise",
+        "group2_name": "40% noise",
+        "group1_mean": 0.28594431888729,
+        "group2_mean": 0.28664129276504674,
+        "group1_std": 0.019778092970061268,
+        "group2_std": 0.015929676953281027,
+        "test_statistic": 459.0,
+        "p_value": 0.8999950372363642,
+        "p_value_corrected": 1.0,
+        "effect_size": 0.02,
+        "test_name": "Mann-Whitney U",
+        "significant": false,
+        "interpretation": "No significant difference (p=1.0000)"
+      },
+      {
+        "group1_name": "0% noise",
+        "group2_name": "50% noise",
+        "group1_mean": 0.2901073038338934,
+        "group2_mean": 0.28564597862141805,
+        "group1_std": 0.014656746401234547,
+        "group2_std": 0.016921469218234165,
+        "test_statistic": 514.0,
+        "p_value": 0.3478277829758114,
+        "p_value_corrected": 1.0,
+        "effect_size": 0.14222222222222222,
+        "test_name": "Mann-Whitney U",
+        "significant": false,
+        "interpretation": "No significant difference (p=1.0000)"
+      },
+      {
+        "group1_name": "10% noise",
+        "group2_name": "20% noise",
+        "group1_mean": 0.2877587819500808,
+        "group2_mean": 0.2854832099566507,
+        "group1_std": 0.01609158881125529,
+        "group2_std": 0.020205148623872154,
+        "test_statistic": 490.0,
+        "p_value": 0.5592305357919067,
+        "p_value_corrected": 1.0,
+        "effect_size": 0.08888888888888889,
+        "test_name": "Mann-Whitney U",
+        "significant": false,
+        "interpretation": "No significant difference (p=1.0000)"
+      },
+      {
+        "group1_name": "10% noise",
+        "group2_name": "25% noise",
+        "group1_mean": 0.28832517952193487,
+        "group2_mean": 0.2900440610137384,
+        "group1_std": 0.014361851121170534,
+        "group2_std": 0.016877523095016205,
+        "test_statistic": 421.0,
+        "p_value": 0.673495052801603,
+        "p_value_corrected": 1.0,
+        "effect_size": -0.06444444444444444,
+        "test_name": "Mann-Whitney U",
+        "significant": false,
+        "interpretation": "No significant difference (p=1.0000)"
+      },
+      {
+        "group1_name": "10% noise",
+        "group2_name": "30% noise",
+        "group1_mean": 0.2899697403782488,
+        "group2_mean": 0.2918046565778591,
+        "group1_std": 0.01446460652461869,
+        "group2_std": 0.010034812790416,
+        "test_statistic": 409.0,
+        "p_value": 0.5493267842679926,
+        "p_value_corrected": 1.0,
+        "effect_size": -0.09111111111111111,
+        "test_name": "Mann-Whitney U",
+        "significant": false,
+        "interpretation": "No significant difference (p=1.0000)"
+      },
+      {
+        "group1_name": "10% noise",
+        "group2_name": "40% noise",
+        "group1_mean": 0.28765204969451663,
+        "group2_mean": 0.29142125197202506,
+        "group1_std": 0.011771436968956705,
+        "group2_std": 0.014067850244177262,
+        "test_statistic": 367.0,
+        "p_value": 0.22257289646656508,
+        "p_value_corrected": 1.0,
+        "effect_size": -0.18444444444444444,
+        "test_name": "Mann-Whitney U",
+        "significant": false,
+        "interpretation": "No significant difference (p=1.0000)"
+      },
+      {
+        "group1_name": "10% noise",
+        "group2_name": "50% noise",
+        "group1_mean": 0.2873113509650763,
+        "group2_mean": 0.2882427206002878,
+        "group1_std": 0.01698724815209121,
+        "group2_std": 0.015450855808943882,
+        "test_statistic": 432.0,
+        "p_value": 0.795845542466455,
+        "p_value_corrected": 1.0,
+        "effect_size": -0.04,
+        "test_name": "Mann-Whitney U",
+        "significant": false,
+        "interpretation": "No significant difference (p=1.0000)"
+      },
+      {
+        "group1_name": "20% noise",
+        "group2_name": "25% noise",
+        "group1_mean": 0.28763447829426014,
+        "group2_mean": 0.2884150834754947,
+        "group1_std": 0.013580560479737132,
+        "group2_std": 0.015928168421590214,
+        "test_statistic": 458.0,
+        "p_value": 0.9117089753194283,
+        "p_value_corrected": 1.0,
+        "effect_size": 0.017777777777777778,
+        "test_name": "Mann-Whitney U",
+        "significant": false,
+        "interpretation": "No significant difference (p=1.0000)"
+      },
+      {
+        "group1_name": "20% noise",
+        "group2_name": "30% noise",
+        "group1_mean": 0.28781239898120226,
+        "group2_mean": 0.28758643223195424,
+        "group1_std": 0.014688126763395983,
+        "group2_std": 0.014591304038327773,
+        "test_statistic": 433.0,
+        "p_value": 0.8072749507289148,
+        "p_value_corrected": 1.0,
+        "effect_size": -0.03777777777777778,
+        "test_name": "Mann-Whitney U",
+        "significant": false,
+        "interpretation": "No significant difference (p=1.0000)"
+      },
+      {
+        "group1_name": "20% noise",
+        "group2_name": "40% noise",
+        "group1_mean": 0.2878235962438094,
+        "group2_mean": 0.2906940594174568,
+        "group1_std": 0.014934453114190378,
+        "group2_std": 0.012351799539908323,
+        "test_statistic": 396.0,
+        "p_value": 0.4289633888604326,
+        "p_value_corrected": 1.0,
+        "effect_size": -0.12,
+        "test_name": "Mann-Whitney U",
+        "significant": false,
+        "interpretation": "No significant difference (p=1.0000)"
+      },
+      {
+        "group1_name": "20% noise",
+        "group2_name": "50% noise",
+        "group1_mean": 0.28703700075372873,
+        "group2_mean": 0.29331531214829326,
+        "group1_std": 0.015484571731012173,
+        "group2_std": 0.013388308691357292,
+        "test_statistic": 348.0,
+        "p_value": 0.13345408758779304,
+        "p_value_corrected": 1.0,
+        "effect_size": -0.22666666666666666,
+        "test_name": "Mann-Whitney U",
+        "significant": false,
+        "interpretation": "No significant difference (p=1.0000)"
+      },
+      {
+        "group1_name": "25% noise",
+        "group2_name": "30% noise",
+        "group1_mean": 0.28831511154993167,
+        "group2_mean": 0.29156219383171667,
+        "group1_std": 0.017359622626381938,
+        "group2_std": 0.01453255057008245,
+        "test_statistic": 389.0,
+        "p_value": 0.37107703212651433,
+        "p_value_corrected": 1.0,
+        "effect_size": -0.13555555555555557,
+        "test_name": "Mann-Whitney U",
+        "significant": false,
+        "interpretation": "No significant difference (p=1.0000)"
+      },
+      {
+        "group1_name": "25% noise",
+        "group2_name": "40% noise",
+        "group1_mean": 0.28920264403122165,
+        "group2_mean": 0.29120386313268826,
+        "group1_std": 0.01696072727998988,
+        "group2_std": 0.0197333301991934,
+        "test_statistic": 408.0,
+        "p_value": 0.5395103167994048,
+        "p_value_corrected": 1.0,
+        "effect_size": -0.09333333333333334,
+        "test_name": "Mann-Whitney U",
+        "significant": false,
+        "interpretation": "No significant difference (p=1.0000)"
+      },
+      {
+        "group1_name": "25% noise",
+        "group2_name": "50% noise",
+        "group1_mean": 0.2890352985550919,
+        "group2_mean": 0.28810311689861245,
+        "group1_std": 0.014449345312260307,
+        "group2_std": 0.014433542327089778,
+        "test_statistic": 490.0,
+        "p_value": 0.5592305357919067,
+        "p_value_corrected": 1.0,
+        "effect_size": 0.08888888888888889,
+        "test_name": "Mann-Whitney U",
+        "significant": false,
+        "interpretation": "No significant difference (p=1.0000)"
+      },
+      {
+        "group1_name": "30% noise",
+        "group2_name": "40% noise",
+        "group1_mean": 0.2863248603854354,
+        "group2_mean": 0.28859392451184207,
+        "group1_std": 0.015402844556629146,
+        "group2_std": 0.012589594676463174,
+        "test_statistic": 384.0,
+        "p_value": 0.3328546915727283,
+        "p_value_corrected": 1.0,
+        "effect_size": -0.14666666666666667,
+        "test_name": "Mann-Whitney U",
+        "significant": false,
+        "interpretation": "No significant difference (p=1.0000)"
+      },
+      {
+        "group1_name": "30% noise",
+        "group2_name": "50% noise",
+        "group1_mean": 0.2861123575834493,
+        "group2_mean": 0.2911665244462725,
+        "group1_std": 0.012180392669759446,
+        "group2_std": 0.011285186990608074,
+        "test_statistic": 333.0,
+        "p_value": 0.08499969748696411,
+        "p_value_corrected": 1.0,
+        "effect_size": -0.26,
+        "test_name": "Mann-Whitney U",
+        "significant": false,
+        "interpretation": "No significant difference (p=1.0000)"
+      },
+      {
+        "group1_name": "40% noise",
+        "group2_name": "50% noise",
+        "group1_mean": 0.2833209356516335,
+        "group2_mean": 0.2882056658467616,
+        "group1_std": 0.01311110354786037,
+        "group2_std": 0.01667497094868481,
+        "test_statistic": 383.0,
+        "p_value": 0.32552658677915214,
+        "p_value_corrected": 1.0,
+        "effect_size": -0.14888888888888888,
+        "test_name": "Mann-Whitney U",
+        "significant": false,
+        "interpretation": "No significant difference (p=1.0000)"
+      }
+    ]
+  },
+  "correlation_analysis": {
+    "results": [
+      {
+        "variable1": "noise_level",
+        "variable2": "semantic_distance",
+        "correlation_coefficient": NaN,
+        "p_value": NaN,
+        "test_name": "Pearson r",
+        "n_samples": 7,
+        "confidence_interval": [
+          NaN,
+          NaN
+        ],
+        "interpretation": "Negligible negative correlation (not significant)"
+      },
+      {
+        "variable1": "noise_level",
+        "variable2": "semantic_distance",
+        "correlation_coefficient": NaN,
+        "p_value": NaN,
+        "test_name": "Spearman \u03c1",
+        "n_samples": 7,
+        "confidence_interval": [
+          NaN,
+          NaN
+        ],
+        "interpretation": "Monotonic relationship: \u03c1=nan"
+      },
+      {
+        "variable1": "noise_level",
+        "variable2": "semantic_distance",
+        "correlation_coefficient": NaN,
+        "p_value": NaN,
+        "test_name": "Kendall \u03c4",
+        "n_samples": 7,
+        "confidence_interval": [
+          NaN,
+          NaN
+        ],
+        "interpretation": "Concordance: \u03c4=nan"
+      },
+      {
+        "variable1": "noise_level",
+        "variable2": "text_similarity",
+        "correlation_coefficient": NaN,
+        "p_value": NaN,
+        "test_name": "Pearson r",
+        "n_samples": 7,
+        "confidence_interval": [
+          NaN,
+          NaN
+        ],
+        "interpretation": "Negligible negative correlation (not significant)"
+      },
+      {
+        "variable1": "noise_level",
+        "variable2": "text_similarity",
+        "correlation_coefficient": NaN,
+        "p_value": NaN,
+        "test_name": "Spearman \u03c1",
+        "n_samples": 7,
+        "confidence_interval": [
+          NaN,
+          NaN
+        ],
+        "interpretation": "Monotonic relationship: \u03c1=nan"
+      },
+      {
+        "variable1": "noise_level",
+        "variable2": "text_similarity",
+        "correlation_coefficient": NaN,
+        "p_value": NaN,
+        "test_name": "Kendall \u03c4",
+        "n_samples": 7,
+        "confidence_interval": [
+          NaN,
+          NaN
+        ],
+        "interpretation": "Concordance: \u03c4=nan"
+      },
+      {
+        "variable1": "noise_level",
+        "variable2": "word_overlap",
+        "correlation_coefficient": NaN,
+        "p_value": NaN,
+        "test_name": "Pearson r",
+        "n_samples": 7,
+        "confidence_interval": [
+          NaN,
+          NaN
+        ],
+        "interpretation": "Negligible negative correlation (not significant)"
+      },
+      {
+        "variable1": "noise_level",
+        "variable2": "word_overlap",
+        "correlation_coefficient": NaN,
+        "p_value": NaN,
+        "test_name": "Spearman \u03c1",
+        "n_samples": 7,
+        "confidence_interval": [
+          NaN,
+          NaN
+        ],
+        "interpretation": "Monotonic relationship: \u03c1=nan"
+      },
+      {
+        "variable1": "noise_level",
+        "variable2": "word_overlap",
+        "correlation_coefficient": NaN,
+        "p_value": NaN,
+        "test_name": "Kendall \u03c4",
+        "n_samples": 7,
+        "confidence_interval": [
+          NaN,
+          NaN
+        ],
+        "interpretation": "Concordance: \u03c4=nan"
+      }
+    ]
+  },
+  "regression_analysis": {
+    "linear": {
+      "predictor": "noise_level",
+      "response": "semantic_distance",
+      "model_type": "Polynomial (degree 1)",
+      "coefficients": [
+        0.28938997901130925,
+        0.0
+      ],
+      "r_squared": 1.0,
+      "adjusted_r_squared": 1.0,
+      "rmse": 0.0,
+      "f_statistic": Infinity,
+      "p_value": 0.0,
+      "predictions": [
+        0.28938997901130925,
+        0.28938997901130925,
+        0.28938997901130925,
+        0.28938997901130925,
+        0.28938997901130925,
+        0.28938997901130925,
+        0.28938997901130925
+      ],
+      "residuals": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "interpretation": "Excellent fit (R\u00b2=1.0000, significant). RMSE=0.000000"
+    },
+    "quadratic": {
+      "predictor": "noise_level",
+      "response": "semantic_distance",
+      "model_type": "Polynomial (degree 2)",
+      "coefficients": [
+        0.28938997901130925,
+        0.0,
+        0.0
+      ],
+      "r_squared": 1.0,
+      "adjusted_r_squared": 1.0,
+      "rmse": 0.0,
+      "f_statistic": Infinity,
+      "p_value": 0.0,
+      "predictions": [
+        0.28938997901130925,
+        0.28938997901130925,
+        0.28938997901130925,
+        0.28938997901130925,
+        0.28938997901130925,
+        0.28938997901130925,
+        0.28938997901130925
+      ],
+      "residuals": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "interpretation": "Excellent fit (R\u00b2=1.0000, significant). RMSE=0.000000"
+    }
+  },
+  "diagnostic_tests": {
+    "semantic_distances_normality": {
+      "test": "Shapiro-Wilk",
+      "statistic": 1.0,
+      "p_value": 1.0,
+      "normal": true,
+      "recommendation": "Use parametric tests (t-test, ANOVA)"
+    },
+    "text_similarities_normality": {
+      "test": "Shapiro-Wilk",
+      "statistic": 1.0,
+      "p_value": 1.0,
+      "normal": true,
+      "recommendation": "Use parametric tests (t-test, ANOVA)"
+    },
+    "word_overlaps_normality": {
+      "test": "Shapiro-Wilk",
+      "statistic": 1.0,
+      "p_value": 1.0,
+      "normal": true,
+      "recommendation": "Use parametric tests (t-test, ANOVA)"
+    },
+    "homoscedasticity": {
+      "levene_test": {
+        "statistic": 0.7453714344089378,
+        "p_value": 0.6137400230454171,
+        "homoscedastic": true
+      },
+      "bartlett_test": {
+        "statistic": 5.251059516553845,
+        "p_value": 0.5120395121965078,
+        "homoscedastic": true
+      },
+      "recommendation": "Equal variances assumption satisfied"
+    }
+  }
+}

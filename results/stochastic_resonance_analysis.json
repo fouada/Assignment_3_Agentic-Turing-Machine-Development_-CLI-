@@ -1,0 +1,83 @@
+{
+  "metadata": {
+    "analysis_type": "Stochastic Resonance Detection",
+    "innovation_level": "MIT Graduate Research - Novel Application",
+    "theoretical_foundation": "Benzi et al. (1981), Gammaitoni et al. (1998)",
+    "date": "2025-11-27",
+    "key_innovation": "First systematic study of stochastic resonance in Large Language Model attention mechanisms"
+  },
+  "stochastic_resonance": {
+    "sr_detected": false,
+    "optimal_noise_level": 0.0,
+    "snr_at_optimal": 39.3384708239683,
+    "snr_at_zero": 39.3384708239683,
+    "sr_gain": 1.0,
+    "resonance_strength": "none",
+    "confidence_interval": [
+      0.0,
+      50.0
+    ],
+    "p_value": 1.0,
+    "theoretical_optimal": 0.0,
+    "interpretation": "No stochastic resonance detected. Translation quality decreases monotonically with noise, indicating the LLM attention mechanism does not exhibit SR in this configuration."
+  },
+  "snr_curve": {
+    "noise_levels": [
+      0.0,
+      10.0,
+      20.0,
+      25.0,
+      30.0,
+      40.0,
+      50.0
+    ],
+    "snr_values": [
+      39.3384708239683,
+      29.43799433766622,
+      23.764147422553314,
+      21.869481241045577,
+      20.309688655879896,
+      17.834741231375972,
+      15.907614024449659
+    ],
+    "snr_smoothed": [
+      38.992107487907575,
+      30.045096486939688,
+      24.021020991097227,
+      21.681400209481325,
+      20.077145499371646,
+      18.032359326628573,
+      15.847562169574715
+    ],
+    "first_derivative": [
+      -0.8947011000967887,
+      -0.7485543248405173,
+      -0.5127519540768688,
+      -0.39438754917255814,
+      -0.28206016710605963,
+      -0.21147916648984655,
+      -0.21847971570538577
+    ],
+    "second_derivative": [
+      0.01461467752562714,
+      0.019097457300995997,
+      0.023641999679363042,
+      0.023069178697080917,
+      0.017329684296073566,
+      0.0031790225700336922,
+      -0.000700054921553922
+    ],
+    "inflection_points": [
+      48.195305654315746
+    ],
+    "curve_type": "monotonic_decreasing"
+  },
+  "attention_threshold": {
+    "threshold_estimate": 25.0,
+    "threshold_confidence": 1.0,
+    "nonlinearity_strength": 0.1,
+    "saturation_point": 54.444389791664406,
+    "model_fit_r2": 0.0,
+    "interpretation": "Poor threshold model fit (R\u00b2=0.000). Attention mechanism may not follow simple threshold dynamics."
+  }
+}
