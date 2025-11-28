@@ -9,6 +9,8 @@ analysis_results.json
 !results/semantic_drift_analysis_local.pdf
 !results/figures/semantic_drift_analysis_local.png
 !results/figures/semantic_drift_analysis_local.pdf
+# Include Streamlit dashboard screenshots
+!results/ScreenShoots/*.png
 
 # Python
 __pycache__/
