@@ -227,7 +227,8 @@ class TestGenerateGraph:
         text_sims = {0: 0.6, 25: 0.7, 50: 0.65}
         word_overlaps = {0: 0.5, 25: 0.6, 50: 0.55}
 
-        generate_graph(distances, text_sims, word_overlaps)
+        # Pass temp_dir as output directory for testing
+        generate_graph(distances, text_sims, word_overlaps, output_dir=temp_dir)
 
         assert (temp_dir / "semantic_drift_analysis_local.png").exists()
         assert (temp_dir / "semantic_drift_analysis_local.pdf").exists()

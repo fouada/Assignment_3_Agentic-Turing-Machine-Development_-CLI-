@@ -461,7 +461,8 @@ def analyze_semantic_drift() -> None:
 def generate_graph(
     distances: Dict[int, float],
     text_similarities: Dict[int, float],
-    word_overlaps: Dict[int, float]
+    word_overlaps: Dict[int, float],
+    output_dir: Path = None
 ) -> None:
     """
     Generate and save comprehensive visualizations of semantic drift analysis.
@@ -476,6 +477,7 @@ def generate_graph(
         distances: Dictionary mapping noise level to cosine distance
         text_similarities: Dictionary mapping noise level to text similarity
         word_overlaps: Dictionary mapping noise level to word overlap
+        output_dir: Optional output directory path. If None, saves to results/ folder.
 
     Side Effects:
         - Saves semantic_drift_analysis_local.png (300 DPI)
@@ -489,7 +491,7 @@ def generate_graph(
         >>> text_sims = {0: 0.6, 25: 0.7, 50: 0.65}
         >>> word_overlaps = {0: 0.5, 25: 0.6, 50: 0.55}
         >>> generate_graph(distances, text_sims, word_overlaps)
-        # Saves graphs to current directory
+        # Saves graphs to results/ directory
     """
     logger.info("Generating visualization graphs")
 
@@ -587,8 +589,11 @@ def generate_graph(
 
         plt.tight_layout()
 
-        # Save figure to results directory
-        results_dir = Path(__file__).parent.parent / "results"
+        # Save figure to output directory (default: results/)
+        if output_dir is None:
+            results_dir = Path(__file__).parent.parent / "results"
+        else:
+            results_dir = Path(output_dir)
         results_dir.mkdir(parents=True, exist_ok=True)
         
         png_path = results_dir / "semantic_drift_analysis_local.png"

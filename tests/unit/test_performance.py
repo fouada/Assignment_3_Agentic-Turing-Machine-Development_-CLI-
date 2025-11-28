@@ -299,7 +299,8 @@ class TestGraphGenerationPerformance:
         word_overlaps = {0: 0.80, 10: 0.72, 20: 0.65, 25: 0.62, 30: 0.55, 40: 0.48, 50: 0.38}
 
         start_time = time.perf_counter()
-        generate_graph(distances, text_sims, word_overlaps)
+        # Pass temp_dir as output directory for testing
+        generate_graph(distances, text_sims, word_overlaps, output_dir=temp_dir)
         elapsed = time.perf_counter() - start_time
 
         assert elapsed < 3.0, f"Graph generation took {elapsed:.2f}s, expected < 3.0s"

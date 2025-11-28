@@ -563,10 +563,10 @@ def render_translation_pipeline(data: Dict[str, Any], translations: Dict[int, Di
             with col2:
                 st.markdown("**🇫🇷 French Translation:**")
                 st.success(trans.get("agent1_french", "N/A"))
-            
+                
             # Hebrew translation
-            st.markdown("**🇮🇱 Hebrew Translation:**")
-            st.success(trans.get("agent2_hebrew", "N/A"))
+                st.markdown("**🇮🇱 Hebrew Translation:**")
+                st.success(trans.get("agent2_hebrew", "N/A"))
             
             # Final output with comparison
             st.markdown("**📤 Final English Output:**")
