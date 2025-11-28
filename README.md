@@ -19,6 +19,7 @@
 - [Usage](#-usage)
 - [Features](#-features)
 - [Key Findings](#-key-findings)
+- [Interactive Dashboard](#-interactive-dashboard)
 - [Architecture](#-architecture)
 - [Research Innovations](#-research-innovations)
 - [Documentation](#-documentation)
@@ -563,21 +564,156 @@ Results saved to: results/
 
 </details>
 
+### 📊 Interactive Dashboard
+
+Launch our MIT-Level Streamlit dashboard for comprehensive visualization and analysis:
+
+```bash
+streamlit run src/dashboard.py
+```
+
+#### Dashboard Overview
+
+<p align="center">
+  <img src="results/ScreenShoots/interactive_dashboard.png" alt="Dashboard Overview" width="800">
+</p>
+
+<p align="center"><em>Main Dashboard: Real-time metrics, semantic drift visualization, and translation pipeline flow</em></p>
+
+---
+
 <details>
-<summary>📊 Interactive Dashboard</summary>
+<summary>🔬 <strong>Semantic Drift Explorer</strong> - Interactive noise analysis with bar charts and detailed metrics</summary>
 
-Launch with `streamlit run src/dashboard.py`
+<p align="center">
+  <img src="results/ScreenShoots/Semantic_Drift.png" alt="Semantic Drift Analysis" width="800">
+</p>
 
-| Page | Description |
-|------|-------------|
-| 🏠 Overview | Key metrics and findings |
-| 🔬 Semantic Drift Explorer | Interactive noise analysis |
-| 🔄 Translation Pipeline | Visual EN→FR→HE→EN flow |
-| 📈 Statistical Analysis | Correlation heatmaps, regression |
-| 🎛️ Sensitivity Analysis | Parameter exploration |
-| 💰 Cost Tracker | API usage visualization |
+**Features:**
+- Toggle between Line, Bar, and Area charts
+- Real-time metric filtering (Cosine Distance, Text Similarity)
+- Detailed metrics table with color-coded values
+- Shows constant 98.9% text similarity across all noise levels
 
 </details>
+
+<details>
+<summary>🔄 <strong>Translation Pipeline Visualizer</strong> - Visual EN→FR→HE→EN flow with examples</summary>
+
+<p align="center">
+  <img src="results/ScreenShoots/Translation_Pipeline_Interactive_Dashboard.png" alt="Translation Pipeline" width="800">
+</p>
+
+**Features:**
+- Visual translation chain flow diagram
+- Interactive noise level slider
+- Side-by-side translation examples (English → French → Hebrew → English)
+- Real-time translation output display
+
+</details>
+
+<details>
+<summary>🎚️ <strong>Noise Level Comparison</strong> - See how 50% noise input still produces perfect output</summary>
+
+<p align="center">
+  <img src="results/ScreenShoots/interactive_dashboard_NoiseLevel.png" alt="Noise Level Analysis" width="800">
+</p>
+
+**Key Finding:** Despite 50% character-level input errors, the AI produces the **same translation as 0% noise**—demonstrating Claude's exceptional robustness to noisy inputs.
+
+</details>
+
+<details>
+<summary>📈 <strong>Statistical Analysis Panel</strong> - Regression analysis, correlation heatmaps, and model statistics</summary>
+
+<p align="center">
+  <img src="results/ScreenShoots/Statistical_Analysis_dashboard.png" alt="Statistical Analysis" width="800">
+</p>
+
+**Features:**
+- Interactive polynomial regression (adjustable degree)
+- Real-time R² score and RMSE calculation
+- 95% confidence interval visualization
+- Model coefficients display
+
+</details>
+
+<details>
+<summary>🎯 <strong>Effect Size Analysis</strong> - Cohen's d and Cliff's δ pairwise comparisons</summary>
+
+<p align="center">
+  <img src="results/ScreenShoots/EffectSizeAnalysis_dashboard.png" alt="Effect Size Analysis" width="800">
+</p>
+
+**Features:**
+- Pairwise effect size heatmap (Cliff's Delta)
+- Significant comparisons highlighting
+- Educational tooltips explaining Cohen's d and Cliff's δ interpretations
+
+</details>
+
+<details>
+<summary>🎛️ <strong>Sensitivity Analysis</strong> - Embedding dimensions, N-gram ranges, Bootstrap analysis</summary>
+
+<p align="center">
+  <img src="results/ScreenShoots/Sensitivity_Analysis_dashboard.png" alt="Sensitivity Analysis" width="800">
+</p>
+
+**Features:**
+- Three analysis tabs: Embedding Dimensions, N-gram Ranges, Bootstrap
+- Parameter exploration with real-time updates
+- Stability metrics visualization
+
+</details>
+
+<details>
+<summary>💰 <strong>Cost Tracker</strong> - API usage visualization with detailed call logs</summary>
+
+<p align="center">
+  <img src="results/ScreenShoots/Cost_Analyzer_dashboard.png" alt="Cost Tracker" width="800">
+</p>
+
+**Key Metrics:**
+- Total API Cost: **$0.0920**
+- Total API Calls: **21**
+- Total Tokens: **27,018**
+- Avg Cost/Call: **$0.0044**
+
+**Features:**
+- Cost breakdown by pipeline stage
+- Token distribution pie chart (96.6% input, 3.4% output)
+- Detailed API call log with timestamps
+
+</details>
+
+<details>
+<summary>ℹ️ <strong>About Page</strong> - Project information, methodology, and resources</summary>
+
+<p align="center">
+  <img src="results/ScreenShoots/About_Interactive_dashboard.png" alt="About Dashboard" width="800">
+</p>
+
+**Includes:**
+- Project information and academic context
+- Methodology overview (translation chain, noise levels, metrics)
+- Key results summary
+- Links to documentation and resources
+
+</details>
+
+#### Dashboard Pages Summary
+
+| Page | Icon | Description | Key Feature |
+|------|------|-------------|-------------|
+| **Overview** | 🏠 | Main dashboard with key metrics | Real-time summary |
+| **Semantic Drift Explorer** | 🔬 | Interactive noise analysis | Multi-chart types |
+| **Translation Pipeline** | 🔄 | Visual EN→FR→HE→EN flow | Live examples |
+| **Statistical Analysis** | 📈 | Regression & correlation | Interactive polynomial fit |
+| **Sensitivity Analysis** | 🎛️ | Parameter exploration | Bootstrap analysis |
+| **Cost Tracker** | 💰 | API usage visualization | Detailed call logs |
+| **About** | ℹ️ | Project documentation | Quick reference |
+
+---
 
 ---
 
@@ -647,6 +783,21 @@ open htmlcov/index.html
 | Total Tests | 478 |
 | Coverage | 87%+ |
 | Passing | 100% |
+
+### CI/CD Pipeline
+
+<p align="center">
+  <img src="results/ScreenShoots/CICD.png" alt="GitHub Actions CI/CD Pipeline" width="800">
+</p>
+
+<p align="center"><em>GitHub Actions: All 5 pipeline jobs passing in 57 seconds</em></p>
+
+**Pipeline Jobs:**
+- ✅ Validate Skills & Code (7s)
+- ✅ Run Tests & Check Coverage (39s)
+- ✅ Run Local Analysis (12s)
+- ✅ Run Experiments
+- ✅ Test Agent Skills (Matrix)
 
 <details>
 <summary>📊 Detailed Coverage Report</summary>
@@ -799,7 +950,8 @@ Assignment_3_Agentic-Turing-Machine-Development_-CLI-/
 ├── 📂 results/                     # Analysis results
 │   ├── analysis.ipynb              # Jupyter notebook
 │   ├── analysis_results_local.json # Metrics
-│   └── figures/                    # Visualizations
+│   ├── figures/                    # Visualizations
+│   └── ScreenShoots/               # Dashboard screenshots
 │
 ├── 📂 scripts/                     # Automation scripts
 │   ├── experiment/                 # Experiment runners
