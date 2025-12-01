@@ -68,7 +68,7 @@ jobs:
           zip -r "agentic-turing-machine-${VERSION}.zip" release/
       
       - name: Create GitHub Release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         with:
           name: "Agentic Turing Machine ${{ github.event.inputs.version || github.ref_name }}"
           body: |
